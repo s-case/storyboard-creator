@@ -91,9 +91,11 @@ public class StoryboardsDomainNavigatorItem extends PlatformObject {
 	 */
 	public boolean equals(Object obj) {
 		if (obj instanceof eu.scasefp7.eclipse.storyboards.diagram.navigator.StoryboardsDomainNavigatorItem) {
-			return EcoreUtil.getURI(getEObject())
-					.equals(EcoreUtil.getURI(((eu.scasefp7.eclipse.storyboards.diagram.navigator.StoryboardsDomainNavigatorItem) obj)
-							.getEObject()));
+			return EcoreUtil
+					.getURI(getEObject())
+					.equals(EcoreUtil
+							.getURI(((eu.scasefp7.eclipse.storyboards.diagram.navigator.StoryboardsDomainNavigatorItem) obj)
+									.getEObject()));
 		}
 		return super.equals(obj);
 	}

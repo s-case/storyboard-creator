@@ -14,7 +14,7 @@ import eu.scasefp7.eclipse.storyboards.StartNode;
 import eu.scasefp7.eclipse.storyboards.StoryboardsPackage;
 
 /**
- * This is the item provider adapter for a {@link storyboards.StartNode} object.
+ * This is the item provider adapter for a {@link eu.scasefp7.eclipse.storyboards.StartNode} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

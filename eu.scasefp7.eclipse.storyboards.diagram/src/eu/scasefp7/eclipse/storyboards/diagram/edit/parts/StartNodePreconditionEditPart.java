@@ -288,9 +288,12 @@ public class StartNodePreconditionEditPart extends CompartmentEditPart implement
 	 */
 	public IParser getParser() {
 		if (parser == null) {
-			parser = StoryboardsParserProvider.getParser(StoryboardsElementTypes.StartNode_2007, getParserElement(),
-					StoryboardsVisualIDRegistry
-							.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.StartNodePreconditionEditPart.VISUAL_ID));
+			parser = StoryboardsParserProvider
+					.getParser(
+							StoryboardsElementTypes.StartNode_2007,
+							getParserElement(),
+							StoryboardsVisualIDRegistry
+									.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.StartNodePreconditionEditPart.VISUAL_ID));
 		}
 		return parser;
 	}

@@ -110,13 +110,15 @@ public class StoryboardsVisualIDRegistry {
 		if (domainElement == null) {
 			return -1;
 		}
-		String containerModelID = eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry.getModelID(containerView);
+		String containerModelID = eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry
+				.getModelID(containerView);
 		if (!StoryboardDiagramEditPart.MODEL_ID.equals(containerModelID)) {
 			return -1;
 		}
 		int containerVisualID;
 		if (StoryboardDiagramEditPart.MODEL_ID.equals(containerModelID)) {
-			containerVisualID = eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry.getVisualID(containerView);
+			containerVisualID = eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry
+					.getVisualID(containerView);
 		} else {
 			if (containerView instanceof Diagram) {
 				containerVisualID = StoryboardDiagramEditPart.VISUAL_ID;
@@ -153,13 +155,15 @@ public class StoryboardsVisualIDRegistry {
 	 * @generated
 	 */
 	public static boolean canCreateNode(View containerView, int nodeVisualID) {
-		String containerModelID = eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry.getModelID(containerView);
+		String containerModelID = eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry
+				.getModelID(containerView);
 		if (!StoryboardDiagramEditPart.MODEL_ID.equals(containerModelID)) {
 			return false;
 		}
 		int containerVisualID;
 		if (StoryboardDiagramEditPart.MODEL_ID.equals(containerModelID)) {
-			containerVisualID = eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry.getVisualID(containerView);
+			containerVisualID = eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry
+					.getVisualID(containerView);
 		} else {
 			if (containerView instanceof Diagram) {
 				containerVisualID = StoryboardDiagramEditPart.VISUAL_ID;
@@ -309,7 +313,8 @@ public class StoryboardsVisualIDRegistry {
 		 */
 		@Override
 		public int getNodeVisualID(View containerView, EObject domainElement) {
-			return eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry.getNodeVisualID(containerView, domainElement);
+			return eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry.getNodeVisualID(
+					containerView, domainElement);
 		}
 
 		/**
@@ -317,8 +322,8 @@ public class StoryboardsVisualIDRegistry {
 		 */
 		@Override
 		public boolean checkNodeVisualID(View containerView, EObject domainElement, int candidate) {
-			return eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry.checkNodeVisualID(containerView, domainElement,
-					candidate);
+			return eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry.checkNodeVisualID(
+					containerView, domainElement, candidate);
 		}
 
 		/**
@@ -326,7 +331,8 @@ public class StoryboardsVisualIDRegistry {
 		 */
 		@Override
 		public boolean isCompartmentVisualID(int visualID) {
-			return eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry.isCompartmentVisualID(visualID);
+			return eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry
+					.isCompartmentVisualID(visualID);
 		}
 
 		/**
@@ -334,7 +340,8 @@ public class StoryboardsVisualIDRegistry {
 		 */
 		@Override
 		public boolean isSemanticLeafVisualID(int visualID) {
-			return eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry.isSemanticLeafVisualID(visualID);
+			return eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsVisualIDRegistry
+					.isSemanticLeafVisualID(visualID);
 		}
 	};
 

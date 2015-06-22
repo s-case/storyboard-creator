@@ -9,7 +9,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link storyboards.EndNode} object.
+ * This is the item provider adapter for a {@link eu.scasefp7.eclipse.storyboards.EndNode} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

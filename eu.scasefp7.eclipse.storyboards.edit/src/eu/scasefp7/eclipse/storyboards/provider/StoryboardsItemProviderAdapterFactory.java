@@ -73,7 +73,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link storyboards.Property} instances.
+	 * This keeps track of the one adapter used for all {@link eu.scasefp7.eclipse.storyboards.Property} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -81,7 +81,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	protected PropertyItemProvider propertyItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link storyboards.Property}.
+	 * This creates an adapter for a {@link eu.scasefp7.eclipse.storyboards.Property}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -96,7 +96,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link storyboards.StoryboardDiagram} instances.
+	 * This keeps track of the one adapter used for all {@link eu.scasefp7.eclipse.storyboards.StoryboardDiagram} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -104,7 +104,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	protected StoryboardDiagramItemProvider storyboardDiagramItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link storyboards.StoryboardDiagram}.
+	 * This creates an adapter for a {@link eu.scasefp7.eclipse.storyboards.StoryboardDiagram}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -119,7 +119,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link storyboards.Action} instances.
+	 * This keeps track of the one adapter used for all {@link eu.scasefp7.eclipse.storyboards.Action} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -127,7 +127,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	protected ActionItemProvider actionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link storyboards.Action}.
+	 * This creates an adapter for a {@link eu.scasefp7.eclipse.storyboards.Action}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -142,7 +142,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link storyboards.Condition} instances.
+	 * This keeps track of the one adapter used for all {@link eu.scasefp7.eclipse.storyboards.Condition} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -150,7 +150,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	protected ConditionItemProvider conditionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link storyboards.Condition}.
+	 * This creates an adapter for a {@link eu.scasefp7.eclipse.storyboards.Condition}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -165,7 +165,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link storyboards.StartNode} instances.
+	 * This keeps track of the one adapter used for all {@link eu.scasefp7.eclipse.storyboards.StartNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -173,7 +173,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	protected StartNodeItemProvider startNodeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link storyboards.StartNode}.
+	 * This creates an adapter for a {@link eu.scasefp7.eclipse.storyboards.StartNode}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -188,7 +188,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link storyboards.EndNode} instances.
+	 * This keeps track of the one adapter used for all {@link eu.scasefp7.eclipse.storyboards.EndNode} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -196,7 +196,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	protected EndNodeItemProvider endNodeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link storyboards.EndNode}.
+	 * This creates an adapter for a {@link eu.scasefp7.eclipse.storyboards.EndNode}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -211,7 +211,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link storyboards.ConditionPath} instances.
+	 * This keeps track of the one adapter used for all {@link eu.scasefp7.eclipse.storyboards.ConditionPath} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -219,7 +219,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	protected ConditionPathItemProvider conditionPathItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link storyboards.ConditionPath}.
+	 * This creates an adapter for a {@link eu.scasefp7.eclipse.storyboards.ConditionPath}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -234,7 +234,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link storyboards.Storyboard} instances.
+	 * This keeps track of the one adapter used for all {@link eu.scasefp7.eclipse.storyboards.Storyboard} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -242,7 +242,7 @@ public class StoryboardsItemProviderAdapterFactory extends StoryboardsAdapterFac
 	protected StoryboardItemProvider storyboardItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link storyboards.Storyboard}.
+	 * This creates an adapter for a {@link eu.scasefp7.eclipse.storyboards.Storyboard}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated

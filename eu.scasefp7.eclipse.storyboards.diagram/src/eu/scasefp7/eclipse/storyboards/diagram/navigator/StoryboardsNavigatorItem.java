@@ -21,7 +21,8 @@ public class StoryboardsNavigatorItem extends StoryboardsAbstractNavigatorItem {
 			public Object getAdapter(Object adaptableObject, Class adapterType) {
 				if (adaptableObject instanceof eu.scasefp7.eclipse.storyboards.diagram.navigator.StoryboardsNavigatorItem
 						&& (adapterType == View.class || adapterType == EObject.class)) {
-					return ((eu.scasefp7.eclipse.storyboards.diagram.navigator.StoryboardsNavigatorItem) adaptableObject).getView();
+					return ((eu.scasefp7.eclipse.storyboards.diagram.navigator.StoryboardsNavigatorItem) adaptableObject)
+							.getView();
 				}
 				return null;
 			}
@@ -71,7 +72,8 @@ public class StoryboardsNavigatorItem extends StoryboardsAbstractNavigatorItem {
 	public boolean equals(Object obj) {
 		if (obj instanceof eu.scasefp7.eclipse.storyboards.diagram.navigator.StoryboardsNavigatorItem) {
 			return EcoreUtil.getURI(getView()).equals(
-					EcoreUtil.getURI(((eu.scasefp7.eclipse.storyboards.diagram.navigator.StoryboardsNavigatorItem) obj).getView()));
+					EcoreUtil.getURI(((eu.scasefp7.eclipse.storyboards.diagram.navigator.StoryboardsNavigatorItem) obj)
+							.getView()));
 		}
 		return super.equals(obj);
 	}

@@ -292,8 +292,9 @@ public class PropertyNameEditPart extends CompartmentEditPart implements ITextAw
 	 */
 	public IParser getParser() {
 		if (parser == null) {
-			parser = StoryboardsParserProvider.getParser(StoryboardsElementTypes.Property_2008, getParserElement(),
-					StoryboardsVisualIDRegistry.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.PropertyNameEditPart.VISUAL_ID));
+			parser = StoryboardsParserProvider
+					.getParser(StoryboardsElementTypes.Property_2008, getParserElement(), StoryboardsVisualIDRegistry
+							.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.PropertyNameEditPart.VISUAL_ID));
 		}
 		return parser;
 	}

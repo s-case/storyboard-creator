@@ -4,13 +4,11 @@ package eu.scasefp7.eclipse.storyboards.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
-
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
-
 import eu.scasefp7.eclipse.storyboards.EndNode;
 import eu.scasefp7.eclipse.storyboards.StoryboardsPackage;
 import eu.scasefp7.eclipse.storyboards.util.StoryboardsValidator;

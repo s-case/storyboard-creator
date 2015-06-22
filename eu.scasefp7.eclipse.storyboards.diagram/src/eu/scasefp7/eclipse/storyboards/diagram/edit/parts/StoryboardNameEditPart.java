@@ -296,9 +296,12 @@ public class StoryboardNameEditPart extends CompartmentEditPart implements IText
 	 */
 	public IParser getParser() {
 		if (parser == null) {
-			parser = StoryboardsParserProvider.getParser(StoryboardsElementTypes.Storyboard_2012, getParserElement(),
-					StoryboardsVisualIDRegistry
-							.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.StoryboardNameEditPart.VISUAL_ID));
+			parser = StoryboardsParserProvider
+					.getParser(
+							StoryboardsElementTypes.Storyboard_2012,
+							getParserElement(),
+							StoryboardsVisualIDRegistry
+									.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.StoryboardNameEditPart.VISUAL_ID));
 		}
 		return parser;
 	}

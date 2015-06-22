@@ -14,7 +14,7 @@ import eu.scasefp7.eclipse.storyboards.ActionNode;
 import eu.scasefp7.eclipse.storyboards.StoryboardsPackage;
 
 /**
- * This is the item provider adapter for a {@link storyboards.ActionNode} object.
+ * This is the item provider adapter for a {@link eu.scasefp7.eclipse.storyboards.ActionNode} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

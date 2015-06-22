@@ -297,7 +297,8 @@ public class ActionNameEditPart extends CompartmentEditPart implements ITextAwar
 	public IParser getParser() {
 		if (parser == null) {
 			parser = StoryboardsParserProvider.getParser(StoryboardsElementTypes.Action_2006, getParserElement(),
-					StoryboardsVisualIDRegistry.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ActionNameEditPart.VISUAL_ID));
+					StoryboardsVisualIDRegistry
+							.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ActionNameEditPart.VISUAL_ID));
 		}
 		return parser;
 	}

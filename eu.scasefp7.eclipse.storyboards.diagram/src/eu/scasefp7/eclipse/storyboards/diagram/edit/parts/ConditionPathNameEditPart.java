@@ -91,7 +91,8 @@ public class ConditionPathNameEditPart extends LabelEditPart implements ITextAwa
 	 */
 	static {
 		registerSnapBackPosition(
-				StoryboardsVisualIDRegistry.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ConditionPathNameEditPart.VISUAL_ID),
+				StoryboardsVisualIDRegistry
+						.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ConditionPathNameEditPart.VISUAL_ID),
 				new Point(0, 40));
 	}
 
@@ -309,9 +310,12 @@ public class ConditionPathNameEditPart extends LabelEditPart implements ITextAwa
 	 */
 	public IParser getParser() {
 		if (parser == null) {
-			parser = StoryboardsParserProvider.getParser(StoryboardsElementTypes.ConditionPath_4001,
-					getParserElement(), StoryboardsVisualIDRegistry
-							.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ConditionPathNameEditPart.VISUAL_ID));
+			parser = StoryboardsParserProvider
+					.getParser(
+							StoryboardsElementTypes.ConditionPath_4001,
+							getParserElement(),
+							StoryboardsVisualIDRegistry
+									.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ConditionPathNameEditPart.VISUAL_ID));
 		}
 		return parser;
 	}

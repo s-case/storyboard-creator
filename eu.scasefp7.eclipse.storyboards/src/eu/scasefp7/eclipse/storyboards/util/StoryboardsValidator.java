@@ -35,7 +35,7 @@ public class StoryboardsValidator extends EObjectValidator {
 	 * @see org.eclipse.emf.common.util.Diagnostic#getCode()
 	 * @generated
 	 */
-	public static final String DIAGNOSTIC_SOURCE = "storyboards";
+	public static final String DIAGNOSTIC_SOURCE = "eu.scasefp7.eclipse.storyboards";
 
 	/**
 	 * The {@link org.eclipse.emf.common.util.Diagnostic#getCode() code} for constraint 'Validate' of 'Property'.

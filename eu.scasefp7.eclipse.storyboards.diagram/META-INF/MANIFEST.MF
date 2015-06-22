@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: eu.scasefp7.eclipse.storyboards.diagram;singleton:=true
+Bundle-SymbolicName: eu.scasefp7.eclipse.storyboards.diagram; singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsDiagramEditorPlugin

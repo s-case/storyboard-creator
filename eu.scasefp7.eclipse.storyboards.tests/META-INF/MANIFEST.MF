@@ -11,5 +11,5 @@ Export-Package: eu.scasefp7.eclipse.storyboards.tests
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.junit;visibility:=reexport,
- eu.scasefp7.eclipse.storyboards;bundle-version="1.0.0"
+ eu.scasefp7.eclipse.storyboards;bundle-version="1.0.0";visibility:=reexport
 Bundle-ActivationPolicy: lazy

@@ -10,7 +10,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import eu.scasefp7.eclipse.storyboards.Storyboard;
 
 /**
- * This is the item provider adapter for a {@link storyboards.Storyboard} object.
+ * This is the item provider adapter for a {@link eu.scasefp7.eclipse.storyboards.Storyboard} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

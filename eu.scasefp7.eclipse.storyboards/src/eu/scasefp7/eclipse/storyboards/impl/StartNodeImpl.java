@@ -4,7 +4,6 @@ package eu.scasefp7.eclipse.storyboards.impl;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -13,7 +12,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import eu.scasefp7.eclipse.storyboards.Node;
 import eu.scasefp7.eclipse.storyboards.StartNode;
 import eu.scasefp7.eclipse.storyboards.StoryboardsPackage;

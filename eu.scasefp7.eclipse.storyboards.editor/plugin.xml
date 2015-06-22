@@ -44,7 +44,7 @@
             id="eu.scasefp7.eclipse.storyboards.presentation.StoryboardsEditorID"
             name="%_UI_StoryboardsEditor_label"
             icon="icons/full/obj16/StoryboardsModelFile.gif"
-            extensions="eu.scasefp7.eclipse.storyboards"
+            extensions="storyboards"
             class="eu.scasefp7.eclipse.storyboards.presentation.StoryboardsEditor"
             contributorClass="eu.scasefp7.eclipse.storyboards.presentation.StoryboardsActionBarContributor">
       </editor>

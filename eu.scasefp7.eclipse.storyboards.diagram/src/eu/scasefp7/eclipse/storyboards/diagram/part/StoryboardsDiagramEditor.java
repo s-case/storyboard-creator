@@ -51,12 +51,12 @@ public class StoryboardsDiagramEditor extends DiagramDocumentEditor implements I
 	/**
 	 * @generated
 	 */
-	public static final String ID = "storyboards.diagram.part.StoryboardsDiagramEditorID"; //$NON-NLS-1$
+	public static final String ID = "eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsDiagramEditorID"; //$NON-NLS-1$
 
 	/**
 	 * @generated
 	 */
-	public static final String CONTEXT_ID = "storyboards.diagram.ui.diagramContext"; //$NON-NLS-1$
+	public static final String CONTEXT_ID = "eu.scasefp7.eclipse.storyboards.diagram.ui.diagramContext"; //$NON-NLS-1$
 
 	/**
 	 * @generated

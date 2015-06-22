@@ -169,7 +169,7 @@ public class StoryboardsActionBarContributor extends EditingDomainActionBarContr
 	public void contributeToMenu(IMenuManager menuManager) {
 		super.contributeToMenu(menuManager);
 
-		IMenuManager submenuManager = new MenuManager(StoryboardsEditorPlugin.INSTANCE.getString("_UI_StoryboardsEditor_menu"), "storyboardsMenuID");
+		IMenuManager submenuManager = new MenuManager(StoryboardsEditorPlugin.INSTANCE.getString("_UI_StoryboardsEditor_menu"), "eu.scasefp7.eclipse.storyboardsMenuID");
 		menuManager.insertAfter("additions", submenuManager);
 		submenuManager.add(new Separator("settings"));
 		submenuManager.add(new Separator("actions"));

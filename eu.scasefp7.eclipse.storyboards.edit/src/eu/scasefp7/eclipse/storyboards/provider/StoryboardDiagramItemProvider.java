@@ -21,7 +21,7 @@ import eu.scasefp7.eclipse.storyboards.StoryboardsFactory;
 import eu.scasefp7.eclipse.storyboards.StoryboardsPackage;
 
 /**
- * This is the item provider adapter for a {@link storyboards.StoryboardDiagram} object.
+ * This is the item provider adapter for a {@link eu.scasefp7.eclipse.storyboards.StoryboardDiagram} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

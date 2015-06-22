@@ -293,8 +293,11 @@ public class ConditionNameEditPart extends CompartmentEditPart implements ITextA
 	public IParser getParser() {
 		if (parser == null) {
 			parser = StoryboardsParserProvider
-					.getParser(StoryboardsElementTypes.Condition_2010, getParserElement(), StoryboardsVisualIDRegistry
-							.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ConditionNameEditPart.VISUAL_ID));
+					.getParser(
+							StoryboardsElementTypes.Condition_2010,
+							getParserElement(),
+							StoryboardsVisualIDRegistry
+									.getType(eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ConditionNameEditPart.VISUAL_ID));
 		}
 		return parser;
 	}

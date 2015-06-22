@@ -232,7 +232,8 @@ public class StoryboardsElementTypes {
 		 */
 		@Override
 		public boolean isKnownElementType(IElementType elementType) {
-			return eu.scasefp7.eclipse.storyboards.diagram.providers.StoryboardsElementTypes.isKnownElementType(elementType);
+			return eu.scasefp7.eclipse.storyboards.diagram.providers.StoryboardsElementTypes
+					.isKnownElementType(elementType);
 		}
 
 		/**
@@ -248,7 +249,8 @@ public class StoryboardsElementTypes {
 		 */
 		@Override
 		public ENamedElement getDefiningNamedElement(IAdaptable elementTypeAdapter) {
-			return eu.scasefp7.eclipse.storyboards.diagram.providers.StoryboardsElementTypes.getElement(elementTypeAdapter);
+			return eu.scasefp7.eclipse.storyboards.diagram.providers.StoryboardsElementTypes
+					.getElement(elementTypeAdapter);
 		}
 	};
 

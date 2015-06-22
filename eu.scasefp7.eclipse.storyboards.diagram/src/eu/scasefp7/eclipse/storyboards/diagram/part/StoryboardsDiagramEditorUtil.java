@@ -150,7 +150,8 @@ public class StoryboardsDiagramEditorUtil {
 
 				try {
 
-					diagramResource.save(eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsDiagramEditorUtil.getSaveOptions());
+					diagramResource.save(eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsDiagramEditorUtil
+							.getSaveOptions());
 				} catch (IOException e) {
 
 					StoryboardsDiagramEditorPlugin.getInstance().logError(

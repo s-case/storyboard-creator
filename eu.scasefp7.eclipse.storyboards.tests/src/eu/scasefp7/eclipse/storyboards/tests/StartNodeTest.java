@@ -13,7 +13,7 @@ import eu.scasefp7.eclipse.storyboards.StoryboardsFactory;
  * <p>
  * The following operations are tested:
  * <ul>
- *   <li>{@link storyboards.StartNode#validate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate</em>}</li>
+ *   <li>{@link eu.scasefp7.eclipse.storyboards.StartNode#validate(org.eclipse.emf.common.util.DiagnosticChain, java.util.Map) <em>Validate</em>}</li>
  * </ul>
  * </p>
  * @generated
