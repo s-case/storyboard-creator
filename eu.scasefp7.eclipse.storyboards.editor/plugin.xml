@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <!--extension point="org.eclipse.ui.newWizards">
+      < ! - - @generated storyboards - - >
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="eu.scasefp7.eclipse.storyboards.presentation.StoryboardsModelWizardID"
+            name="%_UI_StoryboardsModelWizard_label"
+            class="eu.scasefp7.eclipse.storyboards.presentation.StoryboardsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/StoryboardsModelFile.gif">
+         <description>%_UI_StoryboardsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension-->
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated storyboards -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="eu.scasefp7.eclipse.storyboards.presentation.StoryboardsModelWizardID"
+            name="%_UI_StoryboardsModelWizard_label"
+            class="eu.scasefp7.eclipse.storyboards.presentation.StoryboardsModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/StoryboardsModelFile.gif">
+         <description>%_UI_StoryboardsModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated storyboards -->
+      <editor
+            id="eu.scasefp7.eclipse.storyboards.presentation.StoryboardsEditorID"
+            name="%_UI_StoryboardsEditor_label"
+            icon="icons/full/obj16/StoryboardsModelFile.gif"
+            extensions="eu.scasefp7.eclipse.storyboards"
+            class="eu.scasefp7.eclipse.storyboards.presentation.StoryboardsEditor"
+            contributorClass="eu.scasefp7.eclipse.storyboards.presentation.StoryboardsActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

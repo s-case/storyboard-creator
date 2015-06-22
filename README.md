@@ -1,2 +1,2 @@
-# storyboards
-Storyboards plugin
+# storyboard-creator
+Storyboard Creator plugin
