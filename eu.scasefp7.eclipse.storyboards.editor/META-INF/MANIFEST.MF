@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: eu.scasefp7.eclipse.storyboards.presentation.StoryboardsEditorPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: eu.scasefp7.eclipse.storyboards.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
