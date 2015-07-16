@@ -71,7 +71,7 @@ public class ExportToOntologyHandler extends AbstractHandler {
 	 */
 	private void instantiateOntology(String filename) {
 		try {
-			DynamicOntologyAPI ontology = new DynamicOntologyAPI(null);
+			DynamicOntologyAPI ontology = new DynamicOntologyAPI("test");
 			File file = new File(filename);
 			String diagramName = filename.substring(0, filename.lastIndexOf('.'));
 			diagramName = diagramName.substring(diagramName.lastIndexOf('\\') + 1) + "_diagram";
