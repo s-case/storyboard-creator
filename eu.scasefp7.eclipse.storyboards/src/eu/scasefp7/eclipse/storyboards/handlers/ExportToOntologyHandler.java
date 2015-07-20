@@ -26,7 +26,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import eu.scasefp7.core.ontology.DynamicOntologyAPI;
+import eu.scasefp7.eclipse.core.ontology.DynamicOntologyAPI;
 
 /**
  * A command handler for exporting a storyboard diagram to the dynamic ontology.
