@@ -66,6 +66,11 @@
 				<updatePolicy>never</updatePolicy>
 			</releases>
 		</repository>
+		<repository>
+			<id>s-case</id>
+			<layout>p2</layout>
+			<url>http://s-case.github.io/s-case_update_site/</url>
+		</repository>
 	</repositories>
 
 	<build>
