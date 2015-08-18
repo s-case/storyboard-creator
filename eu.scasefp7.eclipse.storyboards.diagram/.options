@@ -1,7 +1,7 @@
-# Tracing options for the Storyboards.diagram plug-in
+# Tracing options for the eu.scasefp7.eclipse.storyboards.diagram plug-in
 
 # Common issues
-Storyboards.diagram/debug=false
+eu.scasefp7.eclipse.storyboards.diagram/debug=false
 
 # Visual IDs
-Storyboards.diagram/debug/visualID=false
+eu.scasefp7.eclipse.storyboards.diagram/debug/visualID=false
