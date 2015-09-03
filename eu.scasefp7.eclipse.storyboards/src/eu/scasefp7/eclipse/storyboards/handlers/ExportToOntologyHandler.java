@@ -1,6 +1,5 @@
 package eu.scasefp7.eclipse.storyboards.handlers;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -62,31 +61,6 @@ public class ExportToOntologyHandler extends AbstractHandler {
 			}
 		}
 		return null;
-	}
-
-	/**
-	 * Instantiates the dynamic ontology given the filename of a storyboard diagram.
-	 * 
-	 * @param filename the filename of a storyboard diagram.
-	 */
-	private void instantiateOntology(String filename) {
-		try {
-			DynamicOntologyAPI ontology = new DynamicOntologyAPI("test");
-			File file = new File(filename);
-			String diagramName = filename.substring(0, filename.lastIndexOf('.'));
-			diagramName = diagramName.substring(diagramName.lastIndexOf('\\') + 1) + "_diagram";
-			ontology.addActivityDiagram(diagramName);
-			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document dom = db.parse(file);
-			Element doc = dom.getDocumentElement();
-			doc.normalize();
-			Node root = doc.getElementsByTagName("auth.storyboards:StoryboardDiagram").item(0);
-			sbdToOwl(diagramName, ontology, root);
-			ontology.close();
-		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -216,12 +190,4 @@ public class ExportToOntologyHandler extends AbstractHandler {
 		return actobj;
 	}
 
-	/**
-	 * Tests the instantiation of the ontology given an sbd file.
-	 * 
-	 * @param args the sbd file that is given as parameter.
-	 */
-	public static void main(String[] args) {
-		new ExportToOntologyHandler().instantiateOntology(args[0]);
-	}
 }
