@@ -44,9 +44,9 @@ public class SBDNode {
 	 * @param node the XML node to intialize this object.
 	 */
 	public SBDNode(Node node) {
+		this.node = node;
 		id = getValue("xmi:id");
 		children = null;
-		this.node = node;
 		name = null;
 		type = null;
 		if (node != null) {
