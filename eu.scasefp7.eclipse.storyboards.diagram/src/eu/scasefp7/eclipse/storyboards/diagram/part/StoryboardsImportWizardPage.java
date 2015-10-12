@@ -1,66 +1,50 @@
 package eu.scasefp7.eclipse.storyboards.diagram.part;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.FileSystemElement;
-import org.eclipse.ui.internal.wizards.datatransfer.DataTransferMessages;
 import org.eclipse.ui.internal.wizards.datatransfer.WizardFileSystemResourceImportPage1;
+import org.eclipse.ui.part.FileEditorInput;
 
 /**
  * @generated NOT
  */
 public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportPage1 {
 
-	private ExtensibleURIConverterImpl urihandler;
-
-	protected Resource diagram;
-
 	public StoryboardsImportWizardPage(IWorkbench workbench, IStructuredSelection selection, String fileImportMask) {
 		super(workbench, selection);
-		urihandler = new ExtensibleURIConverterImpl();
-	}
-
-	protected IPath getFilePath(String filename) {
-		IPath path = getContainerFullPath();
-		if (path == null) {
-			path = new Path(""); //$NON-NLS-1$
-		}
-		String fileName = filename;
-		if (fileName != null) {
-			path = path.append(fileName);
-		}
-		return path;
 	}
 
 	@Override
@@ -88,69 +72,37 @@ public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportP
 			IRunnableWithProgress op = new WorkspaceModifyOperation(null) {
 
 				protected void execute(IProgressMonitor monitor) throws CoreException, InterruptedException {
-					URI uri = URI.createPlatformResourceURI(getFilePath(file.getName()).toString(), false);
-					diagram = StoryboardsDiagramEditorUtil.createDiagram(uri, monitor);
-					if (diagram != null) {
 
-						ArrayList<String> datalines = new ArrayList<String>();
+					String fileName = file.getName();
 
-						try {
-							BufferedReader brlocal = new BufferedReader(new InputStreamReader(
-									urihandler.createInputStream(uri)));
-							String line;
-							while ((line = brlocal.readLine()) != null) {
-								String trimmedline = line.trim();
-								if (trimmedline.startsWith("<auth.storyboards")) {
-									line = line.substring(0, line.lastIndexOf('/')) + '>';
-									datalines.add(line);
-
-									/**
-									 * READ FILE
-									 */
-
-									BufferedReader br;
-									br = new BufferedReader(new FileReader(file));
-									String fileline;
-									while ((fileline = br.readLine()) != null) {
-										String trimmedfileline = fileline.trim();
-										if (trimmedfileline.startsWith("<storyboard")
-												|| trimmedfileline.startsWith("<condition")
-												|| trimmedfileline.startsWith("</storyboard")
-												|| trimmedfileline.startsWith("</auth.storyboards"))
-											datalines.add(fileline);
-									}
-									br.close();
-
-									/**
-									 * END READ FILE
-									 */
-								} else
-									datalines.add(line);
-
-							}
-							brlocal.close();
-
-							BufferedWriter brlocalw = new BufferedWriter(new OutputStreamWriter(
-									urihandler.createOutputStream(uri)));
-							for (String dataline : datalines) {
-								brlocalw.write(dataline);
-							}
-							brlocalw.close();
-
-						} catch (FileNotFoundException e) {
-							e.printStackTrace();
-						} catch (IOException e) {
-							e.printStackTrace();
+					ArrayList<String> datalines = new ArrayList<String>();
+					BufferedReader brlocal;
+					try {
+						brlocal = new BufferedReader(new InputStreamReader(new FileInputStream(file), "UTF-8"));
+						String line;
+						while ((line = brlocal.readLine()) != null) {
+							datalines.add(line);
 						}
-
-						try {
-							StoryboardsDiagramEditorUtil.openDiagram(diagram);
-						} catch (PartInitException e) {
-							ErrorDialog.openError(getContainer().getShell(),
-									Messages.StoryboardsCreationWizardOpenEditorError, null, e.getStatus());
-						}
-
+						brlocal.close();
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
 					}
+					String filedata = "";
+					for (String dataline : datalines) {
+						filedata += dataline + "\n";
+					}
+					InputStream stream = new ByteArrayInputStream(filedata.getBytes(StandardCharsets.UTF_8));
+					IPath resourcePath = getResourcePath();
+					IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+					IProject project = root.getProject(resourcePath.toString());
+					project.getFile(fileName).create(stream, true, monitor);
+
+					IEditorDescriptor desc = PlatformUI.getWorkbench().
+					        getEditorRegistry().getDefaultEditor(file.getName());
+					IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+					page.openEditor(new FileEditorInput(project.getFile(fileName)), desc.getId());
 				}
 			};
 			try {
@@ -159,16 +111,16 @@ public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportP
 				return false;
 			} catch (InvocationTargetException e) {
 				if (e.getTargetException() instanceof CoreException) {
-					ErrorDialog.openError(getContainer().getShell(), Messages.StoryboardsCreationWizardCreationError,
-							null, ((CoreException) e.getTargetException()).getStatus());
+					ErrorDialog.openError(getContainer().getShell(), "Error in file creation", null,
+							((CoreException) e.getTargetException()).getStatus());
+					System.out.println("Error in file creation");
 				} else {
-					StoryboardsDiagramEditorPlugin.getInstance().logError(
-							"Error creating diagram", e.getTargetException()); //$NON-NLS-1$
+					System.out.println("Error creating file");
 				}
 				return false;
 			}
 		}
-		return diagram != null;
+		return true;
 	}
 
 	@Override
