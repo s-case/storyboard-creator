@@ -2,6 +2,7 @@
  */
 package eu.scasefp7.eclipse.storyboards.provider;
 
+import eu.scasefp7.eclipse.storyboards.EndNode;
 import java.util.Collection;
 import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -59,7 +60,10 @@ public class EndNodeItemProvider extends NodeItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_EndNode_type");
+		String label = ((EndNode)object).getAnnotations();
+		return label == null || label.length() == 0 ?
+			getString("_UI_EndNode_type") :
+			getString("_UI_EndNode_type") + " " + label;
 	}
 
 	/**

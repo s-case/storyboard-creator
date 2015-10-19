@@ -19,11 +19,11 @@ import eu.scasefp7.eclipse.storyboards.StoryboardsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.ConditionPathImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.ConditionPathImpl#getNextConditionNode <em>Next Condition Node</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

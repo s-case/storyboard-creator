@@ -17,8 +17,6 @@ import eu.scasefp7.eclipse.storyboards.util.StoryboardsValidator;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>End Node</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

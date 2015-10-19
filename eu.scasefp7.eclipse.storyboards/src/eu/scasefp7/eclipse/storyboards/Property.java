@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.Property#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see eu.scasefp7.eclipse.storyboards.StoryboardsPackage#getProperty()
  * @model

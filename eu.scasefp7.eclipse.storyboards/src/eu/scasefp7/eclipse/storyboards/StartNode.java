@@ -12,11 +12,11 @@ import org.eclipse.emf.common.util.DiagnosticChain;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.StartNode#getPrecondition <em>Precondition</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.StartNode#getFirstNode <em>First Node</em>}</li>
  * </ul>
- * </p>
  *
  * @see eu.scasefp7.eclipse.storyboards.StoryboardsPackage#getStartNode()
  * @model

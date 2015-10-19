@@ -37,6 +37,7 @@ import eu.scasefp7.eclipse.storyboards.util.StoryboardsValidator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.StoryboardDiagramImpl#getStoryboardactions <em>Storyboardactions</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.StoryboardDiagramImpl#getStoryboardproperties <em>Storyboardproperties</em>}</li>
@@ -45,7 +46,6 @@ import eu.scasefp7.eclipse.storyboards.util.StoryboardsValidator;
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.StoryboardDiagramImpl#getStoryboardendnode <em>Storyboardendnode</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.StoryboardDiagramImpl#getStoryboardstoryboards <em>Storyboardstoryboards</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

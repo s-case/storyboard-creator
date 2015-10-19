@@ -17,11 +17,11 @@ import eu.scasefp7.eclipse.storyboards.StoryboardsPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.ActionNodeImpl#getNextNode <em>Next Node</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.ActionNodeImpl#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

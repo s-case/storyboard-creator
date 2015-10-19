@@ -27,11 +27,11 @@ import eu.scasefp7.eclipse.storyboards.util.StoryboardsValidator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.ActionImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.ActionImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

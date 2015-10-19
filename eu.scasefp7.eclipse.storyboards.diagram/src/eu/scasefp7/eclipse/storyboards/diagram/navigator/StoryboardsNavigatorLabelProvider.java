@@ -16,6 +16,7 @@ import org.eclipse.ui.IMemento;
 import org.eclipse.ui.navigator.ICommonContentExtensionSite;
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 
+import eu.scasefp7.eclipse.storyboards.EndNode;
 import eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ActionEditPart;
 import eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ActionNameEditPart;
 import eu.scasefp7.eclipse.storyboards.diagram.edit.parts.ActionNodeNextNodeEditPart;
@@ -259,7 +260,13 @@ public class StoryboardsNavigatorLabelProvider extends LabelProvider implements 
 	 * @generated
 	 */
 	private String getEndNode_2009Text(View view) {
-		return ""; //$NON-NLS-1$
+		EndNode domainModelElement = (EndNode) view.getElement();
+		if (domainModelElement != null) {
+			return domainModelElement.getAnnotations();
+		} else {
+			StoryboardsDiagramEditorPlugin.getInstance().logError("No domain element for view with visualID = " + 2009); //$NON-NLS-1$
+			return ""; //$NON-NLS-1$
+		}
 	}
 
 	/**

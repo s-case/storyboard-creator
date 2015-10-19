@@ -30,11 +30,11 @@ import eu.scasefp7.eclipse.storyboards.util.StoryboardsValidator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.ConditionImpl#getName <em>Name</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.ConditionImpl#getConditionPaths <em>Condition Paths</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

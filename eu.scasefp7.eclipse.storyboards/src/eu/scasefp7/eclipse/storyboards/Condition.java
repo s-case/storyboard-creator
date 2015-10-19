@@ -13,11 +13,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.Condition#getName <em>Name</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.Condition#getConditionPaths <em>Condition Paths</em>}</li>
  * </ul>
- * </p>
  *
  * @see eu.scasefp7.eclipse.storyboards.StoryboardsPackage#getCondition()
  * @model

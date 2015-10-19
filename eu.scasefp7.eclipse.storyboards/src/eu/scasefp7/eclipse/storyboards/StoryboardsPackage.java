@@ -206,6 +206,15 @@ public interface StoryboardsPackage extends EPackage {
 	int NODE = 3;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NODE__ANNOTATIONS = 0;
+
+	/**
 	 * The meta object id for the '{@link eu.scasefp7.eclipse.storyboards.impl.ActionImpl <em>Action</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -232,7 +241,7 @@ public interface StoryboardsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NODE_FEATURE_COUNT = 0;
+	int NODE_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Node</em>' class.
@@ -252,6 +261,15 @@ public interface StoryboardsPackage extends EPackage {
 	 * @generated
 	 */
 	int ACTION_NODE = 9;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION_NODE__ANNOTATIONS = NODE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Next Node</b></em>' reference.
@@ -288,6 +306,15 @@ public interface StoryboardsPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTION_NODE_OPERATION_COUNT = NODE_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTION__ANNOTATIONS = ACTION_NODE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Next Node</b></em>' reference.
@@ -363,6 +390,15 @@ public interface StoryboardsPackage extends EPackage {
 	int CONDITION = 4;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONDITION__ANNOTATIONS = NODE__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -418,6 +454,15 @@ public interface StoryboardsPackage extends EPackage {
 	int START_NODE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int START_NODE__ANNOTATIONS = NODE__ANNOTATIONS;
+
+	/**
 	 * The feature id for the '<em><b>Precondition</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -471,6 +516,15 @@ public interface StoryboardsPackage extends EPackage {
 	 * @generated
 	 */
 	int END_NODE = 6;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int END_NODE__ANNOTATIONS = NODE__ANNOTATIONS;
 
 	/**
 	 * The number of structural features of the '<em>End Node</em>' class.
@@ -554,6 +608,15 @@ public interface StoryboardsPackage extends EPackage {
 	 * @generated
 	 */
 	int STORYBOARD = 8;
+
+	/**
+	 * The feature id for the '<em><b>Annotations</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STORYBOARD__ANNOTATIONS = ACTION_NODE__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Next Node</b></em>' reference.
@@ -768,6 +831,17 @@ public interface StoryboardsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getNode();
+
+	/**
+	 * Returns the meta object for the attribute '{@link eu.scasefp7.eclipse.storyboards.Node#getAnnotations <em>Annotations</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Annotations</em>'.
+	 * @see eu.scasefp7.eclipse.storyboards.Node#getAnnotations()
+	 * @see #getNode()
+	 * @generated
+	 */
+	EAttribute getNode_Annotations();
 
 	/**
 	 * Returns the meta object for class '{@link eu.scasefp7.eclipse.storyboards.Condition <em>Condition</em>}'.
@@ -1125,6 +1199,14 @@ public interface StoryboardsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass NODE = eINSTANCE.getNode();
+
+		/**
+		 * The meta object literal for the '<em><b>Annotations</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute NODE__ANNOTATIONS = eINSTANCE.getNode_Annotations();
 
 		/**
 		 * The meta object literal for the '{@link eu.scasefp7.eclipse.storyboards.impl.ConditionImpl <em>Condition</em>}' class.

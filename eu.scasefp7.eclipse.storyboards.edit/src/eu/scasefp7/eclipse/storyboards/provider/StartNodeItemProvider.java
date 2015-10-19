@@ -110,7 +110,7 @@ public class StartNodeItemProvider extends NodeItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((StartNode)object).getPrecondition();
+		String label = ((StartNode)object).getAnnotations();
 		return label == null || label.length() == 0 ?
 			getString("_UI_StartNode_type") :
 			getString("_UI_StartNode_type") + " " + label;

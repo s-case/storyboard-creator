@@ -9,11 +9,11 @@ package eu.scasefp7.eclipse.storyboards;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.ActionNode#getNextNode <em>Next Node</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.ActionNode#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see eu.scasefp7.eclipse.storyboards.StoryboardsPackage#getActionNode()
  * @model abstract="true"

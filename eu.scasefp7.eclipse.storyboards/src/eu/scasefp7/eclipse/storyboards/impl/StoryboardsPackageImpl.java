@@ -330,6 +330,15 @@ public class StoryboardsPackageImpl extends EPackageImpl implements StoryboardsP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getNode_Annotations() {
+		return (EAttribute)nodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getCondition() {
 		return conditionEClass;
 	}
@@ -543,6 +552,7 @@ public class StoryboardsPackageImpl extends EPackageImpl implements StoryboardsP
 		createEOperation(actionEClass, ACTION___VALIDATE__DIAGNOSTICCHAIN_MAP);
 
 		nodeEClass = createEClass(NODE);
+		createEAttribute(nodeEClass, NODE__ANNOTATIONS);
 
 		conditionEClass = createEClass(CONDITION);
 		createEAttribute(conditionEClass, CONDITION__NAME);
@@ -651,6 +661,7 @@ public class StoryboardsPackageImpl extends EPackageImpl implements StoryboardsP
 		addEParameter(op, g1, "context", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(nodeEClass, Node.class, "Node", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getNode_Annotations(), ecorePackage.getEString(), "annotations", null, 0, 1, Node.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(conditionEClass, Condition.class, "Condition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCondition_Name(), ecorePackage.getEString(), "name", null, 1, 1, Condition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

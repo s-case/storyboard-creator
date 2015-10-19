@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.ConditionPath#getName <em>Name</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.ConditionPath#getNextConditionNode <em>Next Condition Node</em>}</li>
  * </ul>
- * </p>
  *
  * @see eu.scasefp7.eclipse.storyboards.StoryboardsPackage#getConditionPath()
  * @model

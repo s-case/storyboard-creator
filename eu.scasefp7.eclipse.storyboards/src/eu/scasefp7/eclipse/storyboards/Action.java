@@ -13,11 +13,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.Action#getProperties <em>Properties</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.Action#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see eu.scasefp7.eclipse.storyboards.StoryboardsPackage#getAction()
  * @model

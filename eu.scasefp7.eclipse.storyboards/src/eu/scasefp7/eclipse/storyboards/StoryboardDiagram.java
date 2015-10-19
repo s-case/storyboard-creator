@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.StoryboardDiagram#getStoryboardactions <em>Storyboardactions</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.StoryboardDiagram#getStoryboardproperties <em>Storyboardproperties</em>}</li>
@@ -22,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link eu.scasefp7.eclipse.storyboards.StoryboardDiagram#getStoryboardendnode <em>Storyboardendnode</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.StoryboardDiagram#getStoryboardstoryboards <em>Storyboardstoryboards</em>}</li>
  * </ul>
- * </p>
  *
  * @see eu.scasefp7.eclipse.storyboards.StoryboardsPackage#getStoryboardDiagram()
  * @model

@@ -23,11 +23,11 @@ import eu.scasefp7.eclipse.storyboards.util.StoryboardsValidator;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.StartNodeImpl#getPrecondition <em>Precondition</em>}</li>
  *   <li>{@link eu.scasefp7.eclipse.storyboards.impl.StartNodeImpl#getFirstNode <em>First Node</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
