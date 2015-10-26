@@ -148,7 +148,7 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 					// Add an action node as an activity
 					ontology.addActivity(sbdnode.getName());
 					ontology.connectActivityDiagramToElement(diagramName, sbdnode.getName());
-					String[] actionAndObject = getActionAndObject(sbdnode.getName());
+					String[] actionAndObject = getActionAndObject(sbdnode.getName(), sbdnode.getAnnotations());
 					String action = actionAndObject[0];
 					String object1 = actionAndObject[1];
 					ontology.addActionToActivity(sbdnode.getName(), action);
@@ -218,13 +218,32 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 	 * Extracts the action and the object of an activity.
 	 * 
 	 * @param activity the activity to be split.
+	 * @param annotations the annotations of this activity.
 	 * @return a string array including the action in the first position and the object in the second.
 	 */
-	private static String[] getActionAndObject(String activity) {
+	private static String[] getActionAndObject(String activity, String annotations) {
 		String[] actobj = new String[2];
+		actobj[0] = "";
+		actobj[1] = "";
+		if (annotations != null) {
+			String[] annotationList = annotations.split("\\\\n");
+			for (int i = 0; i < annotationList.length; i++) {
+				String annotation = annotationList[i];
+				String annType = annotation.split("\\\\t")[0].split(":")[1].substring(0, 1);
+				if (annType.equals("T")) {
+					String annotationType = annotation.split("\\\\t")[1].split("\\s+")[0];
+					if (annotationType.equals("Action"))
+						actobj[0] = annotation.split("\\\\t")[2];
+					else if (annotationType.equals("Object"))
+						actobj[1] = annotation.split("\\\\t")[2];
+				}
+			}
+		}
 		String[] tempactobj = activity.split("\\s+");
-		actobj[0] = tempactobj[0];
-		actobj[1] = tempactobj[tempactobj.length - 1];
+		if (actobj[0].equals(""))
+			actobj[0] = tempactobj[0];
+		if (actobj[1].equals(""))
+			actobj[1] = tempactobj[tempactobj.length - 1];
 		return actobj;
 	}
 

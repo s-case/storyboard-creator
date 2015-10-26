@@ -39,9 +39,14 @@ public class SBDNode {
 	ArrayList<SBDNode> children;
 
 	/**
+	 * The annotations of the element.
+	 */
+	String annotations;
+
+	/**
 	 * Initializes this object, extracting its name, its type, and its children.
 	 * 
-	 * @param node the XML node to intialize this object.
+	 * @param node the XML node to initialize this object.
 	 */
 	public SBDNode(Node node) {
 		this.node = node;
@@ -96,6 +101,10 @@ public class SBDNode {
 			children.add(new SBDNode(conditionPath1, conditionPath1Name, "conditionpath"));
 			children.add(new SBDNode(conditionPath2, conditionPath2Name, "conditionpath"));
 		}
+		if (node.getAttributes() != null && node.getAttributes().getNamedItem("annotations") != null)
+			annotations = node.getAttributes().getNamedItem("name").getNodeValue();
+		else
+			annotations = null;
 	}
 
 	/**
@@ -164,6 +173,15 @@ public class SBDNode {
 	 */
 	public String getPrecondition() {
 		return getValue("Precondition");
+	}
+
+	/**
+	 * Returns the annotations of this object.
+	 * 
+	 * @return the annotations of this object.
+	 */
+	public String getAnnotations() {
+		return getValue("annotations");
 	}
 
 	/**
