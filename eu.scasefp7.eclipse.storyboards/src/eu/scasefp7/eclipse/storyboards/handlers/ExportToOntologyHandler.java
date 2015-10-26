@@ -1,6 +1,9 @@
 package eu.scasefp7.eclipse.storyboards.handlers;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -75,15 +78,50 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 			String filename = file.getName();
 			String diagramName = filename.substring(0, filename.lastIndexOf('.'));
 			diagramName = diagramName.substring(diagramName.lastIndexOf('\\') + 1) + "_diagram";
+			instantiateOntology(diagramName, file.getContents(), ontology);
+		} catch (CoreException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Instantiates the dynamic ontology given the file of a storyboard diagram.
+	 * 
+	 * @param file an {@link File} instance of a storyboard diagram.
+	 * @param ontology the ontology to be instantiated.
+	 */
+	protected void instantiateOntology(File file, DynamicOntologyAPI ontology) {
+		try {
+			String filename = file.getName();
+			String diagramName = filename.substring(0, filename.lastIndexOf('.'));
+			diagramName = diagramName.substring(diagramName.lastIndexOf('\\') + 1) + "_diagram";
+			InputStream is = new FileInputStream(file);
+			instantiateOntology(diagramName, is, ontology);
+			is.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Instantiates the ontology given a diagram as an inputstream string.
+	 * 
+	 * @param diagramName the name of the diagram.
+	 * @param stream the {@link InputStream} that contains the diagram
+	 * @param ontology the ontology to be instantiated.
+	 */
+	protected void instantiateOntology(String diagramName, InputStream stream, DynamicOntologyAPI ontology) {
+		try {
 			ontology.addActivityDiagram(diagramName);
 			DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder db = dbf.newDocumentBuilder();
-			Document dom = db.parse(file.getContents());
+			Document dom = db.parse(stream);
 			Element doc = dom.getDocumentElement();
 			doc.normalize();
 			Node root = doc.getElementsByTagName("auth.storyboards:StoryboardDiagram").item(0);
 			sbdToOwl(diagramName, ontology, root);
-		} catch (ParserConfigurationException | SAXException | IOException | CoreException e) {
+			ontology.close();
+		} catch (ParserConfigurationException | SAXException | IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -190,4 +228,14 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 		return actobj;
 	}
 
+	/**
+	 * Tests this export handler.
+	 * 
+	 * @param args the filename of the file to be added to the dynamic ontology.
+	 */
+	public static void main(String[] args) {
+		File file = new File(args[0]);
+		DynamicOntologyAPI ontology = new DynamicOntologyAPI("Project", true);
+		new ExportToOntologyHandler().instantiateOntology(file, ontology);
+	}
 }
