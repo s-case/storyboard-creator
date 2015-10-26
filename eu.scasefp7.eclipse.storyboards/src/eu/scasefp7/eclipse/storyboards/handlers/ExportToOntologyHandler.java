@@ -9,7 +9,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
@@ -32,7 +31,7 @@ import eu.scasefp7.eclipse.core.ontology.DynamicOntologyAPI;
  * 
  * @author themis
  */
-public class ExportToOntologyHandler extends AbstractHandler {
+public class ExportToOntologyHandler extends ProjectAwareHandler {
 
 	/**
 	 * This function is called when the user selects the menu item. It reads the selected resource(s) and populates the
@@ -47,6 +46,7 @@ public class ExportToOntologyHandler extends AbstractHandler {
 		if (selection instanceof IStructuredSelection) {
 			IStructuredSelection structuredSelection = (IStructuredSelection) selection;
 			List<Object> selectionList = structuredSelection.toList();
+			DynamicOntologyAPI ontology = new DynamicOntologyAPI(getProjectOfSelectionList(selectionList), true);
 			// Iterate over the selected files
 			for (Object object : selectionList) {
 				IFile file = (IFile) Platform.getAdapterManager().getAdapter(object, IFile.class);
@@ -56,7 +56,7 @@ public class ExportToOntologyHandler extends AbstractHandler {
 					}
 				}
 				if (file != null) {
-					instantiateOntology(file);
+					instantiateOntology(file, ontology);
 				}
 			}
 		}
@@ -67,10 +67,10 @@ public class ExportToOntologyHandler extends AbstractHandler {
 	 * Instantiates the dynamic ontology given the file of a storyboard diagram.
 	 * 
 	 * @param file an {@link IFile} instance of a storyboard diagram.
+	 * @param ontology the ontology to be instantiated.
 	 */
-	private void instantiateOntology(IFile file) {
+	private void instantiateOntology(IFile file, DynamicOntologyAPI ontology) {
 		try {
-			DynamicOntologyAPI ontology = new DynamicOntologyAPI(file.getProject());
 			String filename = file.getName();
 			String diagramName = filename.substring(0, filename.lastIndexOf('.'));
 			diagramName = diagramName.substring(diagramName.lastIndexOf('\\') + 1) + "_diagram";
