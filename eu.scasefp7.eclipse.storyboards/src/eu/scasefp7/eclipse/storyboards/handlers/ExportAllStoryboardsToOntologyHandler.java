@@ -67,7 +67,6 @@ public class ExportAllStoryboardsToOntologyHandler extends ProjectAwareHandler {
 	private void instantiateOntology(IFile file, DynamicOntologyAPI ontology) {
 		try {
 			String filename = file.getName();
-			System.out.println(filename);
 			String diagramName = filename.substring(0, filename.lastIndexOf('.'));
 			diagramName = diagramName.substring(diagramName.lastIndexOf('\\') + 1) + "_diagram";
 			ontology.addActivityDiagram(diagramName);
