@@ -59,6 +59,7 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 					instantiateOntology(file, ontology);
 				}
 			}
+			ontology.close();
 		}
 		return null;
 	}
@@ -82,7 +83,6 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 			doc.normalize();
 			Node root = doc.getElementsByTagName("auth.storyboards:StoryboardDiagram").item(0);
 			sbdToOwl(diagramName, ontology, root);
-			ontology.close();
 		} catch (ParserConfigurationException | SAXException | IOException | CoreException e) {
 			e.printStackTrace();
 		}

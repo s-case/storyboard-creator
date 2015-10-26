@@ -42,6 +42,7 @@ public class ExportAllStoryboardsToOntologyHandler extends ExportToOntologyHandl
 					instantiateOntology(file, ontology);
 				}
 			}
+			ontology.close();
 		}
 		return null;
 	}
