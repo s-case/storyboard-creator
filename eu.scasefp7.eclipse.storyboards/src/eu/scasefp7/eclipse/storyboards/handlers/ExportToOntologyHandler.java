@@ -69,7 +69,7 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 	 * @param file an {@link IFile} instance of a storyboard diagram.
 	 * @param ontology the ontology to be instantiated.
 	 */
-	private void instantiateOntology(IFile file, DynamicOntologyAPI ontology) {
+	protected void instantiateOntology(IFile file, DynamicOntologyAPI ontology) {
 		try {
 			String filename = file.getName();
 			String diagramName = filename.substring(0, filename.lastIndexOf('.'));
