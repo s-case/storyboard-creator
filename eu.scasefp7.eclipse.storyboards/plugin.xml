@@ -18,7 +18,6 @@
       <category id="eu.scasefp7.eclipse.storyboards.commands.category" name="Storyboards Commands Category"/>
       <command categoryId="eu.scasefp7.eclipse.storyboards.commands.category" id="eu.scasefp7.eclipse.storyboards.commands.exportToOntology" name="Export to ontology"/>
       <command categoryId="eu.scasefp7.eclipse.storyboards.commands.category" id="eu.scasefp7.eclipse.storyboards.commands.exportAllToOntology" name="Export all storyboards to ontology"/>
-      <command categoryId="eu.scasefp7.eclipse.storyboards.commands.category" id="eu.scasefp7.eclipse.storyboards.commands.annotateDiagramInstances" name="Annotate Diagram Instances"/>
    </extension>
 
    <extension point="org.eclipse.ui.handlers">
@@ -34,17 +33,6 @@
 	     </enabledWhen>
       </handler>
       <handler class="eu.scasefp7.eclipse.storyboards.handlers.ExportAllStoryboardsToOntologyHandler" commandId="eu.scasefp7.eclipse.storyboards.commands.exportAllToOntology">
-      	 <enabledWhen>
-			<with variable="selection">
-				<iterate ifEmpty="false">
-					<adapt type="org.eclipse.core.resources.IResource">
-				    	<test property="org.eclipse.core.resources.name" value="*.sbd" />
-				    </adapt>
-				</iterate>
-           </with>
-	     </enabledWhen>
-      </handler>
-      <handler class="eu.scasefp7.eclipse.storyboards.handlers.AnnotateDiagramInstancesHandler" commandId="eu.scasefp7.eclipse.storyboards.commands.annotateDiagramInstances">
       	 <enabledWhen>
 			<with variable="selection">
 				<iterate ifEmpty="false">
@@ -71,17 +59,6 @@
                   </visibleWhen>
             </command>
             <command commandId="eu.scasefp7.eclipse.storyboards.commands.exportAllToOntology" id="eu.scasefp7.eclipse.storyboards.menus.exportAllToOntology" icon="images/sample.gif">
-                  <visibleWhen>
-		           <with variable="activeMenuSelection">
-		            <iterate ifEmpty="false">
-		             <adapt type="org.eclipse.core.resources.IResource">
-		               <test property="org.eclipse.core.resources.name" value="*.sbd" />
-		             </adapt>
-		            </iterate>
-		           </with>
-                  </visibleWhen>
-            </command>
-            <command commandId="eu.scasefp7.eclipse.storyboards.commands.annotateDiagramInstances" id="eu.scasefp7.eclipse.storyboards.menus.annotateDiagramInstances" icon="images/sample.gif">
                   <visibleWhen>
 		           <with variable="activeMenuSelection">
 		            <iterate ifEmpty="false">
