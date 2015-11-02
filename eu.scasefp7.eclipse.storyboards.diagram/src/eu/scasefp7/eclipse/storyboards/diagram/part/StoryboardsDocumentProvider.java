@@ -523,7 +523,7 @@ public class StoryboardsDocumentProvider extends AbstractDocumentProvider implem
 		String diagramName = "";
 		ResourceSet theResourceSet = ((IDiagramDocument) document).getEditingDomain().getResourceSet();
 		for (Resource aResource : theResourceSet.getResources()) {
-			projectName = aResource.getURI().segment(aResource.getURI().segmentCount() - 2);
+			projectName = aResource.getURI().segment(1);
 			diagramName = aResource.getURI().lastSegment().split("\\.")[0];
 			break;
 		}
