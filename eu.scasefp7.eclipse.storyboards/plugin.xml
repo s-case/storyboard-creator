@@ -32,17 +32,7 @@
            </with>
 	     </enabledWhen>
       </handler>
-      <handler class="eu.scasefp7.eclipse.storyboards.handlers.ExportAllStoryboardsToOntologyHandler" commandId="eu.scasefp7.eclipse.storyboards.commands.exportAllToOntology">
-      	 <enabledWhen>
-			<with variable="selection">
-				<iterate ifEmpty="false">
-					<adapt type="org.eclipse.core.resources.IResource">
-				    	<test property="org.eclipse.core.resources.name" value="*.sbd" />
-				    </adapt>
-				</iterate>
-           </with>
-	     </enabledWhen>
-      </handler>
+      <handler class="eu.scasefp7.eclipse.storyboards.handlers.ExportAllStoryboardsToOntologyHandler" commandId="eu.scasefp7.eclipse.storyboards.commands.exportAllToOntology"/>
    </extension>
    <extension
          point="org.eclipse.ui.menus">
