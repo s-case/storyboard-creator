@@ -43,8 +43,11 @@ import org.eclipse.ui.part.FileEditorInput;
  */
 public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportPage1 {
 
+	private final String fileExtension;
+
 	public StoryboardsImportWizardPage(IWorkbench workbench, IStructuredSelection selection, String fileImportMask) {
 		super(workbench, selection);
+		fileExtension = fileImportMask;
 	}
 
 	@Override
@@ -61,8 +64,8 @@ public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportP
 			File fileSystemObject = (File) ((FileSystemElement) resourcesEnum.next()).getFileSystemObject();
 			String filename = fileSystemObject.getName();
 			int i = filename.lastIndexOf('.');
-			if (i <= 0 || !filename.substring(i + 1).equals("sbd")) {
-				setErrorMessage("All files imported must have the sbd extension!");
+			if (i <= 0 || !filename.substring(i + 1).equals(fileExtension)) {
+				setErrorMessage("All files imported must have the " + fileExtension + " extension!");
 				return false;
 			}
 			fileSystemObjects.add(fileSystemObject);
@@ -99,8 +102,8 @@ public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportP
 					IProject project = root.getProject(resourcePath.toString());
 					project.getFile(fileName).create(stream, true, monitor);
 
-					IEditorDescriptor desc = PlatformUI.getWorkbench().
-					        getEditorRegistry().getDefaultEditor(file.getName());
+					IEditorDescriptor desc = PlatformUI.getWorkbench().getEditorRegistry()
+							.getDefaultEditor(file.getName());
 					IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 					page.openEditor(new FileEditorInput(project.getFile(fileName)), desc.getId());
 				}

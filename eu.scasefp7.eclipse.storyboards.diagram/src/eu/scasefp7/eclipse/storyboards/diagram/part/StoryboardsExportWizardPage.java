@@ -47,6 +47,8 @@ import org.eclipse.ui.internal.wizards.datatransfer.WizardFileSystemResourceExpo
  */
 public class StoryboardsExportWizardPage extends WizardFileSystemResourceExportPage1 {
 
+	private final String fileExtension;
+
 	private ExtensibleURIConverterImpl urihandler;
 
 	protected Resource diagram;
@@ -54,6 +56,7 @@ public class StoryboardsExportWizardPage extends WizardFileSystemResourceExportP
 	public StoryboardsExportWizardPage(IWorkbench workbench, IStructuredSelection selection, String fileImportMask) {
 		super(selection);
 		urihandler = new ExtensibleURIConverterImpl();
+		fileExtension = fileImportMask;
 	}
 
 	@Override
@@ -91,8 +94,8 @@ public class StoryboardsExportWizardPage extends WizardFileSystemResourceExportP
 		for (Object file : resourcesToExport) {
 			String filename = ((org.eclipse.core.internal.resources.File) file).getName();
 			int i = filename.lastIndexOf('.');
-			if (i <= 0 || !filename.substring(i + 1).equals("sbd")) {
-				setErrorMessage("All files imported must have the sbd extension!");
+			if (i <= 0 || !filename.substring(i + 1).equals(fileExtension)) {
+				setErrorMessage("All files imported must have the " + fileExtension + " extension!");
 				return false;
 			}
 		}
