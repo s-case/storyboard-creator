@@ -28,6 +28,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import eu.scasefp7.eclipse.core.ontology.DynamicOntologyAPI;
+import eu.scasefp7.eclipse.storyboards.Activator;
 
 /**
  * A command handler for exporting a storyboard diagram to the dynamic ontology.
@@ -80,7 +81,7 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 			diagramName = diagramName.substring(diagramName.lastIndexOf('\\') + 1) + "_diagram";
 			instantiateOntology(diagramName, file.getContents(), ontology);
 		} catch (CoreException e) {
-			e.printStackTrace();
+			Activator.log("Error reading the contents of an sbd file", e);
 		}
 	}
 
@@ -122,7 +123,7 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 			sbdToOwl(diagramName, ontology, root);
 			ontology.close();
 		} catch (ParserConfigurationException | SAXException | IOException e) {
-			e.printStackTrace();
+			Activator.log("Error instantiating the dynamic ontology", e);
 		}
 	}
 
