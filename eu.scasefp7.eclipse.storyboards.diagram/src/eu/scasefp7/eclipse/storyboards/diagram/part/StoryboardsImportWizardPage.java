@@ -27,9 +27,6 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -41,6 +38,7 @@ import org.eclipse.ui.part.FileEditorInput;
 /**
  * @generated NOT
  */
+@SuppressWarnings({ "restriction", "rawtypes" })
 public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportPage1 {
 
 	private final String fileExtension;
@@ -88,9 +86,9 @@ public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportP
 						}
 						brlocal.close();
 					} catch (FileNotFoundException e) {
-						e.printStackTrace();
+						StoryboardsDiagramEditorPlugin.log("Error reading storyboard diagram from file system", e);
 					} catch (IOException e) {
-						e.printStackTrace();
+						StoryboardsDiagramEditorPlugin.log("Error reading storyboard diagram from file system", e);
 					}
 					String filedata = "";
 					for (String dataline : datalines) {
@@ -111,8 +109,10 @@ public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportP
 			try {
 				getContainer().run(false, true, op);
 			} catch (InterruptedException e) {
+				StoryboardsDiagramEditorPlugin.log("Error importing storyboard diagram", e);
 				return false;
 			} catch (InvocationTargetException e) {
+				StoryboardsDiagramEditorPlugin.log("Error importing storyboard diagram", e);
 				if (e.getTargetException() instanceof CoreException) {
 					ErrorDialog.openError(getContainer().getShell(), "Error in file creation", null,
 							((CoreException) e.getTargetException()).getStatus());
