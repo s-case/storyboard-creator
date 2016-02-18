@@ -350,7 +350,7 @@ public class StoryboardsDiagramEditorPlugin extends AbstractUIPlugin {
 		msg += "\n!FAILURE_TIMESTAMP " + formatter.format(new Date());
 		errorID++;
 		if (instance != null)
-			instance.getLog().log(new Status(Status.INFO, PLUGIN_ID, Status.OK, msg, exception));
+			instance.getLog().log(new Status(Status.ERROR, PLUGIN_ID, Status.OK, msg, exception));
 		else
 			exception.printStackTrace();
 	}
