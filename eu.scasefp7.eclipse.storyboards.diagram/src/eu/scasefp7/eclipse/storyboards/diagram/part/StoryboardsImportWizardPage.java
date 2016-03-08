@@ -30,6 +30,7 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -60,10 +61,31 @@ public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportP
 					project = ((IContainer) obj).getProject();
 				else
 					project = (((IResource) obj).getParent()).getProject();
-				IContainer container = fileImportMask.equals("scd") ? project.getFolder("compositions") : project
-						.getFolder("requirements");
-				if (!container.exists())
-					container = project;
+				String requirementsFolderLocation = null;
+				try {
+					requirementsFolderLocation = project.getPersistentProperty(new QualifiedName("",
+							"eu.scasefp7.eclipse.core.ui.rqsFolder"));
+				} catch (CoreException e) {
+					StoryboardsDiagramEditorPlugin.log(
+							"Error retrieving project property (requirements folder location)", e);
+				}
+				String compositionsFolderLocation = requirementsFolderLocation;
+				try {
+					compositionsFolderLocation = project.getPersistentProperty(new QualifiedName("",
+							"eu.scasefp7.eclipse.core.ui.compFolder"));
+				} catch (CoreException e) {
+					StoryboardsDiagramEditorPlugin.log(
+							"Error retrieving project property (compositions folder location)", e);
+				}
+				IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+				IContainer container = project;
+				if (fileExtension.equals("scd") && compositionsFolderLocation != null) {
+					if (root.findMember(new Path(compositionsFolderLocation)).exists())
+						container = (IContainer) root.findMember(new Path(compositionsFolderLocation));
+				} else if (fileExtension.equals("sbd") && requirementsFolderLocation != null) {
+					if (root.findMember(new Path(requirementsFolderLocation)).exists())
+						container = (IContainer) root.findMember(new Path(requirementsFolderLocation));
+				}
 				setContainerFieldValue(container.getFullPath().toString());
 			}
 		}

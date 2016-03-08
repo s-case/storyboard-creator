@@ -3,8 +3,12 @@ package eu.scasefp7.eclipse.storyboards.diagram.part;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -97,10 +101,31 @@ public class StoryboardsCreationWizardPage extends WizardNewFileCreationPage {
 					project = ((IContainer) obj).getProject();
 				else
 					project = (((IResource) obj).getParent()).getProject();
-				IContainer container = fileExtension.equals("scd") ? project.getFolder("compositions") : project
-						.getFolder("requirements");
-				if (!container.exists())
-					container = project;
+				String requirementsFolderLocation = null;
+				try {
+					requirementsFolderLocation = project.getPersistentProperty(new QualifiedName("",
+							"eu.scasefp7.eclipse.core.ui.rqsFolder"));
+				} catch (CoreException e) {
+					StoryboardsDiagramEditorPlugin.log(
+							"Error retrieving project property (requirements folder location)", e);
+				}
+				String compositionsFolderLocation = null;
+				try {
+					compositionsFolderLocation = project.getPersistentProperty(new QualifiedName("",
+							"eu.scasefp7.eclipse.core.ui.compFolder"));
+				} catch (CoreException e) {
+					StoryboardsDiagramEditorPlugin.log(
+							"Error retrieving project property (compositions folder location)", e);
+				}
+				IWorkspaceRoot root = ResourcesPlugin.getWorkspace().getRoot();
+				IContainer container = project;
+				if (fileExtension.equals("scd") && compositionsFolderLocation != null) {
+					if (root.findMember(new Path(compositionsFolderLocation)).exists())
+						container = (IContainer) root.findMember(new Path(compositionsFolderLocation));
+				} else if (fileExtension.equals("sbd") && requirementsFolderLocation != null) {
+					if (root.findMember(new Path(requirementsFolderLocation)).exists())
+						container = (IContainer) root.findMember(new Path(requirementsFolderLocation));
+				}
 				setContainerFullPath(container.getFullPath());
 			}
 		}
