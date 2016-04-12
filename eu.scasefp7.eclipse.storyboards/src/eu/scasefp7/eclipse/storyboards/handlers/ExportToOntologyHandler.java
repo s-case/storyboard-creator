@@ -187,31 +187,60 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 			}
 			if (sbdnode.getType().equals("action") || sbdnode.getType().equals("storyboard")
 					|| sbdnode.getType().equals("startnode")) {
-				// Add the transitions in the case of conditions
 				String nextNodeId = sbdnode.getNextNode();
 				String from = sbdnode.getName();
 				SBDNode nextNode = ids.get(nextNodeId);
-				if (nextNode.getType().equals("condition")) {
-					ArrayList<SBDNode> conditionPaths = nextNode.getChildren();
+				addTransitions(diagramName, ontology, ids, from, nextNode, new ArrayList<String>());
+			}
+		}
+	}
 
-					SBDNode actionOfConditionPath0 = ids.get(conditionPaths.get(0).getNextNode());
-					SBDNode actionOfConditionPath1 = ids.get(conditionPaths.get(1).getNextNode());
+	/**
+	 * Adds the transitions to an action node of a storyboard. If there are conditions, this function recursively calls
+	 * itself to find the next action node and connects all conditions to the transition.
+	 * 
+	 * @param diagramName the name of the diagram.
+	 * @param ontology the ontology instance.
+	 * @param ids hashmap used to find the ids of the nodes.
+	 * @param from the name of the initial node.
+	 * @param nextNode the current name of the next node.
+	 * @param conditionNames list used to hold the conditions to be added to the final transition.
+	 */
+	private void addTransitions(String diagramName, DynamicOntologyAPI ontology, HashMap<String, SBDNode> ids,
+			String from, SBDNode nextNode, ArrayList<String> conditionNames) {
+		if (nextNode.getType().equals("condition")) {
+			// Add the transitions in the case of conditions
+			ArrayList<SBDNode> conditionPaths = nextNode.getChildren();
 
-					ontology.addTransition(from, actionOfConditionPath0.getName());
-					ontology.connectActivityDiagramToTransition(diagramName, from, actionOfConditionPath0.getName());
-					ontology.addConditionToTransition(conditionPaths.get(0).getName(), from,
-							actionOfConditionPath0.getName());
-
-					ontology.addTransition(from, actionOfConditionPath1.getName());
-					ontology.connectActivityDiagramToTransition(diagramName, from, actionOfConditionPath1.getName());
-					ontology.addConditionToTransition(conditionPaths.get(1).getName(), from,
-							actionOfConditionPath1.getName());
-				} else {
-					// Add the transitions
-					ontology.addTransition(from, nextNode.getName());
-					ontology.connectActivityDiagramToTransition(diagramName, from, nextNode.getName());
+			SBDNode actionOfConditionPath0 = ids.get(conditionPaths.get(0).getNextNode());
+			ArrayList<String> newConditionNames0 = new ArrayList<String>(conditionNames);
+			newConditionNames0.add(conditionPaths.get(0).getName());
+			if (actionOfConditionPath0.getType().equals("condition")) {
+				addTransitions(diagramName, ontology, ids, from, actionOfConditionPath0, newConditionNames0);
+			} else {
+				ontology.addTransition(from, actionOfConditionPath0.getName());
+				ontology.connectActivityDiagramToTransition(diagramName, from, actionOfConditionPath0.getName());
+				for (String conditionName : newConditionNames0) {
+					ontology.addConditionToTransition(conditionName, from, actionOfConditionPath0.getName());
 				}
 			}
+
+			SBDNode actionOfConditionPath1 = ids.get(conditionPaths.get(1).getNextNode());
+			ArrayList<String> newConditionNames1 = new ArrayList<String>(conditionNames);
+			newConditionNames1.add(conditionPaths.get(1).getName());
+			if (actionOfConditionPath1.getType().equals("condition")) {
+				addTransitions(diagramName, ontology, ids, from, actionOfConditionPath1, newConditionNames1);
+			} else {
+				ontology.addTransition(from, actionOfConditionPath1.getName());
+				ontology.connectActivityDiagramToTransition(diagramName, from, actionOfConditionPath1.getName());
+				for (String conditionName : newConditionNames1) {
+					ontology.addConditionToTransition(conditionName, from, actionOfConditionPath1.getName());
+				}
+			}
+		} else {
+			// Add the transitions
+			ontology.addTransition(from, nextNode.getName());
+			ontology.connectActivityDiagramToTransition(diagramName, from, nextNode.getName());
 		}
 	}
 
