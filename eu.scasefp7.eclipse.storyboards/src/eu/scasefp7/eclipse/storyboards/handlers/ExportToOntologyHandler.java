@@ -78,7 +78,7 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 		try {
 			String filename = file.getName();
 			String diagramName = filename.substring(0, filename.lastIndexOf('.'));
-			diagramName = diagramName.substring(diagramName.lastIndexOf('\\') + 1) + "_diagram";
+			diagramName = "SBD_" + diagramName.substring(diagramName.lastIndexOf('\\') + 1);
 			instantiateOntology(diagramName, file.getContents(), ontology);
 		} catch (CoreException e) {
 			Activator.log("Error reading the contents of an sbd file", e);
@@ -95,7 +95,7 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 		try {
 			String filename = file.getName();
 			String diagramName = filename.substring(0, filename.lastIndexOf('.'));
-			diagramName = diagramName.substring(diagramName.lastIndexOf('\\') + 1) + "_diagram";
+			diagramName = "SBD_" + diagramName.substring(diagramName.lastIndexOf('\\') + 1);
 			InputStream is = new FileInputStream(file);
 			instantiateOntology(diagramName, is, ontology);
 			is.close();
