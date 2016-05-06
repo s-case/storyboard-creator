@@ -51,13 +51,13 @@
    <extension point="org.eclipse.ui.newWizards" id="creation-wizard">
       <?gmfgen generated="false"?>
       <category
-            name="Storyboard Creator"
-            id="eu.scasefp7.eclipse.storyboards">
+            id="eu.scasefp7.eclipse.category"
+            name="S-CASE">
       </category>
   	  <wizard
   	     name="%newWizardName"
   	     icon="icons/obj16/StoryboardsDiagramFile.gif"
-  	     category="eu.scasefp7.eclipse.storyboards"
+  	     category="eu.scasefp7.eclipse.category"
   	     class="eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsCreationWizard"
   	     id="eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsCreationWizardID">
   	  	 <description>%newWizardDesc</description>  
@@ -67,13 +67,13 @@
    <extension point="org.eclipse.ui.newWizards" id="creation-wizard-scd">
       <?gmfgen generated="false"?>
       <category
-            name="Storyboard Creator"
-            id="eu.scasefp7.eclipse.storyboards">
+            id="eu.scasefp7.eclipse.category"
+            name="S-CASE">
       </category>
   	  <wizard
   	     name="Web Service Composition Storyboards Diagram"
   	     icon="icons/obj16/StoryboardsDiagramFile.gif"
-  	     category="eu.scasefp7.eclipse.storyboards"
+  	     category="eu.scasefp7.eclipse.category"
   	     class="eu.scasefp7.eclipse.storyboards.diagram.part.ServiceCompositionStoryboardsCreationWizard"
   	     id="eu.scasefp7.eclipse.storyboards.diagram.part.ServiceCompositionStoryboardsCreationWizardID">
   	  	 <description>Creates Web Service Composition Storyboards Diagram.</description>  
@@ -83,13 +83,13 @@
    <extension point="org.eclipse.ui.importWizards" id="import-wizard">
       <?gmfgen generated="false"?>
       <category
-            name="Storyboard Creator"
-            id="eu.scasefp7.eclipse.storyboards">
+            id="eu.scasefp7.eclipse.category"
+            name="S-CASE">
       </category>
   	  <wizard
   	     name="%newWizardName"
   	     icon="icons/obj16/StoryboardsDiagramFile.gif"
-  	     category="eu.scasefp7.eclipse.storyboards"
+  	     category="eu.scasefp7.eclipse.category"
   	     class="eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsImportWizard"
   	     id="eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsImportWizardID">
   	  	 <description>%importWizardDesc</description>  
@@ -99,13 +99,13 @@
    <extension point="org.eclipse.ui.importWizards" id="import-wizard-scd">
       <?gmfgen generated="false"?>
       <category
-            name="Storyboard Creator"
-            id="eu.scasefp7.eclipse.storyboards">
+            id="eu.scasefp7.eclipse.category"
+            name="S-CASE">
       </category>
   	  <wizard
   	     name="Web Service Composition Storyboards Diagram"
   	     icon="icons/obj16/StoryboardsDiagramFile.gif"
-  	     category="eu.scasefp7.eclipse.storyboards"
+  	     category="eu.scasefp7.eclipse.category"
   	     class="eu.scasefp7.eclipse.storyboards.diagram.part.ServiceCompositionStoryboardsImportWizard"
   	     id="eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsImportWizardID">
   	  	 <description>Imports Web Service Composition Storyboards Diagram.</description>  
@@ -115,13 +115,13 @@
    <extension point="org.eclipse.ui.exportWizards" id="export-wizard">
       <?gmfgen generated="false"?>
       <category
-            name="Storyboard Creator"
-            id="eu.scasefp7.eclipse.storyboards">
+            id="eu.scasefp7.eclipse.category"
+            name="S-CASE">
       </category>
   	  <wizard
   	     name="%newWizardName"
   	     icon="icons/obj16/StoryboardsDiagramFile.gif"
-  	     category="eu.scasefp7.eclipse.storyboards"
+  	     category="eu.scasefp7.eclipse.category"
   	     class="eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsExportWizard"
   	     id="eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsExportWizardID">
   	  	 <description>%exportWizardDesc</description>  
@@ -131,13 +131,13 @@
    <extension point="org.eclipse.ui.exportWizards" id="export-wizard-scd">
       <?gmfgen generated="false"?>
       <category
-            name="Storyboard Creator"
-            id="eu.scasefp7.eclipse.storyboards">
+            id="eu.scasefp7.eclipse.category"
+            name="S-CASE">
       </category>
   	  <wizard
   	     name="Web Service Composition Storyboards Diagram"
   	     icon="icons/obj16/StoryboardsDiagramFile.gif"
-  	     category="eu.scasefp7.eclipse.storyboards"
+  	     category="eu.scasefp7.eclipse.category"
   	     class="eu.scasefp7.eclipse.storyboards.diagram.part.ServiceCompositionStoryboardsExportWizard"
   	     id="eu.scasefp7.eclipse.storyboards.diagram.part.StoryboardsExportWizardID">
   	  	 <description>Exports Web Service Composition Storyboards Diagram.</description>  
