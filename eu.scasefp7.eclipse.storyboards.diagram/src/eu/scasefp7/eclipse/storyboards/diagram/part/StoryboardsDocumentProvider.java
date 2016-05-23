@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -22,6 +23,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.ISchedulingRule;
 import org.eclipse.core.runtime.jobs.MultiRule;
@@ -519,21 +521,40 @@ public class StoryboardsDocumentProvider extends AbstractDocumentProvider implem
 	protected void doSaveDocument(IProgressMonitor monitor, Object element, IDocument document, boolean overwrite)
 			throws CoreException {
 
-		String projectName = "";
-		String diagramName = "";
 		ResourceSet theResourceSet = ((IDiagramDocument) document).getEditingDomain().getResourceSet();
-		URI diagramURI = null;
-		for (Resource aResource : theResourceSet.getResources()) {
-			projectName = aResource.getURI().segment(1);
-			diagramName = aResource.getURI().lastSegment().split("\\.")[0];
-			diagramURI = aResource.getURI();
-			break;
+		URI diagramURI = theResourceSet.getResources().get(0).getURI();
+		String projectName = diagramURI.segment(1);
+		String diagramName = diagramURI.lastSegment().split("\\.")[0];
+		String fileExtension = diagramURI.lastSegment().split("\\.")[1];
+
+		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		String requirementsFolderLocation = null;
+		try {
+			requirementsFolderLocation = project.getPersistentProperty(new QualifiedName("",
+					"eu.scasefp7.eclipse.core.ui.rqsFolder"));
+		} catch (CoreException e) {
+			StoryboardsDiagramEditorPlugin.log("Error retrieving project property (requirements folder location)", e);
 		}
-		IProject theproject = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
+		String compositionsFolderLocation = null;
+		try {
+			compositionsFolderLocation = project.getPersistentProperty(new QualifiedName("",
+					"eu.scasefp7.eclipse.core.ui.compFolder"));
+		} catch (CoreException e) {
+			StoryboardsDiagramEditorPlugin.log("Error retrieving project property (compositions folder location)", e);
+		}
+		IContainer container = project;
+		if (fileExtension.equals("scd") && compositionsFolderLocation != null) {
+			if (project.findMember(new Path(compositionsFolderLocation)).exists())
+				container = (IContainer) project.findMember(new Path(compositionsFolderLocation));
+		} else if (fileExtension.equals("sbd") && requirementsFolderLocation != null) {
+			if (project.findMember(new Path(requirementsFolderLocation)).exists())
+				container = (IContainer) project.findMember(new Path(requirementsFolderLocation));
+		}
+
 		HashSet<String> storyboardNames = new HashSet<String>();
-		for (IResource theresource : theproject.members()) {
+		for (IResource theresource : container.members()) {
 			String[] nameAndExtension = theresource.getName().split("\\.");
-			if (nameAndExtension.length > 1 && nameAndExtension[1].equals("sbd"))
+			if (nameAndExtension.length > 1 && nameAndExtension[1].equals(fileExtension))
 				storyboardNames.add(nameAndExtension[0]);
 		}
 
@@ -582,14 +603,14 @@ public class StoryboardsDocumentProvider extends AbstractDocumentProvider implem
 				info.startResourceListening();
 			}
 		} else {
-			URI newResoruceURI;
+			URI newResourceURI;
 			List<IFile> affectedFiles = null;
 			if (element instanceof FileEditorInput) {
 				IFile newFile = ((FileEditorInput) element).getFile();
 				affectedFiles = Collections.singletonList(newFile);
-				newResoruceURI = URI.createPlatformResourceURI(newFile.getFullPath().toString(), true);
+				newResourceURI = URI.createPlatformResourceURI(newFile.getFullPath().toString(), true);
 			} else if (element instanceof URIEditorInput) {
-				newResoruceURI = ((URIEditorInput) element).getURI();
+				newResourceURI = ((URIEditorInput) element).getURI();
 			} else {
 				fireElementStateChangeFailed(element);
 				throw new CoreException(new Status(IStatus.ERROR, StoryboardsDiagramEditorPlugin.ID, 0, NLS.bind(
@@ -606,11 +627,13 @@ public class StoryboardsDocumentProvider extends AbstractDocumentProvider implem
 								0,
 								"Incorrect document used: " + document + " instead of org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument", null)); //$NON-NLS-1$ //$NON-NLS-2$
 			}
-			final IFile diagramFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(newResoruceURI.path().substring(9)));
-			final IFile originalDiagramFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(diagramURI.path().substring(9)));
+			final IFile diagramFile = ResourcesPlugin.getWorkspace().getRoot()
+					.getFile(new Path(newResourceURI.path().substring(9)));
+			final IFile originalDiagramFile = ResourcesPlugin.getWorkspace().getRoot()
+					.getFile(new Path(diagramURI.path().substring(9)));
 			IDiagramDocument diagramDocument = (IDiagramDocument) document;
 			final Resource newResource = diagramDocument.getEditingDomain().getResourceSet()
-					.createResource(newResoruceURI);
+					.createResource(newResourceURI);
 			final Diagram diagramCopy = (Diagram) EcoreUtil.copy(diagramDocument.getDiagram());
 			try {
 				new AbstractTransactionalCommand(diagramDocument.getEditingDomain(), NLS.bind(
