@@ -59,7 +59,7 @@ public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportP
 				StoryboardsDiagramEditorPlugin.log("Error retrieving project property (requirements folder location)",
 						e);
 			}
-			String compositionsFolderLocation = requirementsFolderLocation;
+			String compositionsFolderLocation = null;
 			try {
 				compositionsFolderLocation = project.getPersistentProperty(new QualifiedName("",
 						"eu.scasefp7.eclipse.core.ui.compFolder"));
