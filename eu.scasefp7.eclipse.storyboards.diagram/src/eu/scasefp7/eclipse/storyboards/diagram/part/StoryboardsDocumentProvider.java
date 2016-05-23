@@ -522,9 +522,11 @@ public class StoryboardsDocumentProvider extends AbstractDocumentProvider implem
 		String projectName = "";
 		String diagramName = "";
 		ResourceSet theResourceSet = ((IDiagramDocument) document).getEditingDomain().getResourceSet();
+		URI diagramURI = null;
 		for (Resource aResource : theResourceSet.getResources()) {
 			projectName = aResource.getURI().segment(1);
 			diagramName = aResource.getURI().lastSegment().split("\\.")[0];
+			diagramURI = aResource.getURI();
 			break;
 		}
 		IProject theproject = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
@@ -604,6 +606,8 @@ public class StoryboardsDocumentProvider extends AbstractDocumentProvider implem
 								0,
 								"Incorrect document used: " + document + " instead of org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDiagramDocument", null)); //$NON-NLS-1$ //$NON-NLS-2$
 			}
+			final IFile diagramFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(newResoruceURI.path().substring(9)));
+			final IFile originalDiagramFile = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(diagramURI.path().substring(9)));
 			IDiagramDocument diagramDocument = (IDiagramDocument) document;
 			final Resource newResource = diagramDocument.getEditingDomain().getResourceSet()
 					.createResource(newResoruceURI);
@@ -618,6 +622,18 @@ public class StoryboardsDocumentProvider extends AbstractDocumentProvider implem
 					}
 				}.execute(monitor, null);
 				newResource.save(StoryboardsDiagramEditorUtil.getSaveOptions());
+				new AbstractTransactionalCommand(diagramDocument.getEditingDomain(), NLS.bind(
+						Messages.StoryboardsDocumentProvider_SaveAsOperation, diagramCopy.getName()), affectedFiles) {
+					protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info)
+							throws ExecutionException {
+						try {
+							diagramFile.setContents(originalDiagramFile.getContents(), true, true, monitor);
+						} catch (CoreException e) {
+							e.printStackTrace();
+						}
+						return CommandResult.newOKCommandResult();
+					}
+				}.execute(monitor, null);
 			} catch (ExecutionException e) {
 				fireElementStateChangeFailed(element);
 				throw new CoreException(new Status(IStatus.ERROR, StoryboardsDiagramEditorPlugin.ID, 0,
