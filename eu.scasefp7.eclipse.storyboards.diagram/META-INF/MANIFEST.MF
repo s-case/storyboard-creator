@@ -37,6 +37,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.gef;visibility:=reexport,
  org.eclipse.emf.validation;visibility:=reexport,
  org.eclipse.swt,
+ eu.scasefp7.eclipse.core.ui;bundle-version="[1.2.0,2.0.0)",
  eu.scasefp7.eclipse.storyboards;bundle-version="1.0.0",
  eu.scasefp7.eclipse.storyboards.edit;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
