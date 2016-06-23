@@ -2,6 +2,7 @@ package eu.scasefp7.eclipse.storyboards.diagram.part;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
@@ -107,11 +108,13 @@ public class StoryboardsCreationWizardPage extends WizardNewFileCreationPage {
 			}
 			IContainer container = project;
 			if (fileExtension.equals("scd") && compositionsFolderLocation != null) {
-				if (project.findMember(new Path(compositionsFolderLocation)).exists())
-					container = (IContainer) project.findMember(new Path(compositionsFolderLocation));
+				IResource compositionsFolder = project.findMember(new Path(compositionsFolderLocation));
+				if (compositionsFolder != null && compositionsFolder.exists())
+					container = (IContainer) compositionsFolder;
 			} else if (fileExtension.equals("sbd") && requirementsFolderLocation != null) {
-				if (project.findMember(new Path(requirementsFolderLocation)).exists())
-					container = (IContainer) project.findMember(new Path(requirementsFolderLocation));
+				IResource requirementsFolder = project.findMember(new Path(requirementsFolderLocation));
+				if (requirementsFolder != null && requirementsFolder.exists())
+					container = (IContainer) requirementsFolder;
 			}
 			setContainerFullPath(container.getFullPath());
 		}
