@@ -788,9 +788,9 @@
    <extension point="eu.scasefp7.eclipse.core.ui.dashboardItem">
    <?gmfgen generated="false"?>
    		<group
-            id="eu.scasefp7.eclipse.core.ui.dashboard.groups.design"
-        	appearsBefore="eu.scasefp7.eclipse.core.ui.dashboard.groups.storyboard"
-	        name="Design" /> 
+			id="eu.scasefp7.eclipse.core.ui.dashboard.groups.design"
+            appearsBefore="eu.scasefp7.eclipse.core.ui.dashboard.groups.mashup"
+            name="Design" />
         <command
               buttonId="eu.scasefp7.eclipse.core.ui.dashboard.buttons.createstoryboards"
               commandId="org.eclipse.ui.newWizard"
