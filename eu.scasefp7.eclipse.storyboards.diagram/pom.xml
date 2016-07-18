@@ -12,4 +12,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
   <artifactId>eu.scasefp7.eclipse.storyboards.diagram</artifactId>
   <packaging>eclipse-plugin</packaging>
 
+  <dependencies>
+  	<dependency>
+  		<groupId>eu.scasefp7.eclipse</groupId>
+  		<artifactId>eu.scasefp7.eclipse.core</artifactId>
+  		<version>1.2.0-SNAPSHOT</version>
+  		<type>eclipse-plugin</type>
+  	</dependency>
+  </dependencies>
+
 </project>
