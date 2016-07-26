@@ -13,6 +13,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.eclipse.core.resources.IContainer;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.ErrorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -21,23 +32,12 @@ import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IWorkbench;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.core.resources.IContainer;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.IResource;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.core.runtime.QualifiedName;
-import org.eclipse.jface.dialogs.ErrorDialog;
-import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.FileSystemElement;
 import org.eclipse.ui.internal.wizards.datatransfer.WizardFileSystemResourceImportPage1;
 import org.eclipse.ui.part.FileEditorInput;
+
+import eu.scasefp7.eclipse.core.builder.ProjectUtils;
 
 /**
  * @generated NOT
@@ -52,31 +52,11 @@ public class StoryboardsImportWizardPage extends WizardFileSystemResourceImportP
 		fileExtension = fileImportMask;
 		if (selection != null && selection.isEmpty() == false && selection instanceof IStructuredSelection) {
 			IProject project = ProjectLocator.getProjectOfSelectionList((IStructuredSelection) selection);
-			String requirementsFolderLocation = null;
-			try {
-				requirementsFolderLocation = project.getPersistentProperty(new QualifiedName("",
-						"eu.scasefp7.eclipse.core.ui.rqsFolder"));
-			} catch (CoreException e) {
-				StoryboardsDiagramEditorPlugin.log("Error retrieving project property (requirements folder location)",
-						e);
-			}
-			String compositionsFolderLocation = null;
-			try {
-				compositionsFolderLocation = project.getPersistentProperty(new QualifiedName("",
-						"eu.scasefp7.eclipse.core.ui.compFolder"));
-			} catch (CoreException e) {
-				StoryboardsDiagramEditorPlugin.log("Error retrieving project property (compositions folder location)",
-						e);
-			}
-			IContainer container = project;
-			if (fileExtension.equals("scd") && compositionsFolderLocation != null) {
-				IResource compositionsFolder = project.findMember(new Path(compositionsFolderLocation));
-				if (compositionsFolder != null && compositionsFolder.exists())
-					container = (IContainer) compositionsFolder;
-			} else if (fileExtension.equals("sbd") && requirementsFolderLocation != null) {
-				IResource requirementsFolder = project.findMember(new Path(requirementsFolderLocation));
-				if (requirementsFolder != null && requirementsFolder.exists())
-					container = (IContainer) requirementsFolder;
+		    IContainer container = project;
+			if (fileExtension.equals("scd")) {
+			    container = ProjectUtils.getProjectCompositionsFolder(project);
+			} else if (fileExtension.equals("sbd")) {
+			    container = ProjectUtils.getProjectRequirementsFolder(project);
 			}
 			setContainerFieldValue(container.getFullPath().toString());
 		}

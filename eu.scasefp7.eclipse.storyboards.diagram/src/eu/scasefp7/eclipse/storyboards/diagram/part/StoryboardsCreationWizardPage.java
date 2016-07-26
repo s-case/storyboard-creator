@@ -14,6 +14,8 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
+import eu.scasefp7.eclipse.core.builder.ProjectUtils;
+
 /**
  * @generated
  */
@@ -90,31 +92,12 @@ public class StoryboardsCreationWizardPage extends WizardNewFileCreationPage {
 	private void initialize() {
 		if (selection != null && selection.isEmpty() == false && selection instanceof IStructuredSelection) {
 			IProject project = ProjectLocator.getProjectOfSelectionList((IStructuredSelection) selection);
-			String requirementsFolderLocation = null;
-			try {
-				requirementsFolderLocation = project.getPersistentProperty(new QualifiedName("",
-						"eu.scasefp7.eclipse.core.ui.rqsFolder"));
-			} catch (CoreException e) {
-				StoryboardsDiagramEditorPlugin.log("Error retrieving project property (requirements folder location)",
-						e);
-			}
-			String compositionsFolderLocation = null;
-			try {
-				compositionsFolderLocation = project.getPersistentProperty(new QualifiedName("",
-						"eu.scasefp7.eclipse.core.ui.compFolder"));
-			} catch (CoreException e) {
-				StoryboardsDiagramEditorPlugin.log("Error retrieving project property (compositions folder location)",
-						e);
-			}
+
 			IContainer container = project;
-			if (fileExtension.equals("scd") && compositionsFolderLocation != null) {
-				IResource compositionsFolder = project.findMember(new Path(compositionsFolderLocation));
-				if (compositionsFolder != null && compositionsFolder.exists())
-					container = (IContainer) compositionsFolder;
-			} else if (fileExtension.equals("sbd") && requirementsFolderLocation != null) {
-				IResource requirementsFolder = project.findMember(new Path(requirementsFolderLocation));
-				if (requirementsFolder != null && requirementsFolder.exists())
-					container = (IContainer) requirementsFolder;
+			if (fileExtension.equals("scd")) {
+			    container = ProjectUtils.getProjectCompositionsFolder(project);
+			} else if (fileExtension.equals("sbd")) {
+			    container = ProjectUtils.getProjectRequirementsFolder(project);
 			}
 			setContainerFullPath(container.getFullPath());
 		}

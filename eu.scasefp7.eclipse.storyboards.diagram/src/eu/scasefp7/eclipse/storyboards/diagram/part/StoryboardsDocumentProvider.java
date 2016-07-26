@@ -61,6 +61,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.part.FileEditorInput;
 
+import eu.scasefp7.eclipse.core.builder.ProjectUtils;
 import eu.scasefp7.eclipse.storyboards.impl.StoryboardDiagramImpl;
 
 /**
@@ -528,29 +529,11 @@ public class StoryboardsDocumentProvider extends AbstractDocumentProvider implem
 		String fileExtension = diagramURI.lastSegment().split("\\.")[1];
 
 		IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(projectName);
-		String requirementsFolderLocation = null;
-		try {
-			requirementsFolderLocation = project.getPersistentProperty(new QualifiedName("",
-					"eu.scasefp7.eclipse.core.ui.rqsFolder"));
-		} catch (CoreException e) {
-			StoryboardsDiagramEditorPlugin.log("Error retrieving project property (requirements folder location)", e);
-		}
-		String compositionsFolderLocation = null;
-		try {
-			compositionsFolderLocation = project.getPersistentProperty(new QualifiedName("",
-					"eu.scasefp7.eclipse.core.ui.compFolder"));
-		} catch (CoreException e) {
-			StoryboardsDiagramEditorPlugin.log("Error retrieving project property (compositions folder location)", e);
-		}
 		IContainer container = project;
-		if (fileExtension.equals("scd") && compositionsFolderLocation != null) {
-			IResource compositionsFolder = project.findMember(new Path(compositionsFolderLocation));
-			if (compositionsFolder != null && compositionsFolder.exists())
-				container = (IContainer) compositionsFolder;
-		} else if (fileExtension.equals("sbd") && requirementsFolderLocation != null) {
-			IResource requirementsFolder = project.findMember(new Path(requirementsFolderLocation));
-			if (requirementsFolder != null && requirementsFolder.exists())
-				container = (IContainer) requirementsFolder;
+		if (fileExtension.equals("scd")) {
+		    container = ProjectUtils.getProjectCompositionsFolder(project);
+		} else if (fileExtension.equals("sbd")) {
+		    container = ProjectUtils.getProjectRequirementsFolder(project);
 		}
 
 		HashSet<String> storyboardNames = new HashSet<String>();
