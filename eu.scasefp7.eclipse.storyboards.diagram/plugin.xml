@@ -792,7 +792,7 @@
             appearsBefore="eu.scasefp7.eclipse.core.ui.dashboard.groups.mashup"
             name="Design" />
         <command
-              buttonId="eu.scasefp7.eclipse.core.ui.dashboard.buttons.createstoryboards"
+              buttonId="eu.scasefp7.eclipse.core.ui.dashboard.buttons.design.createstoryboards"
               commandId="org.eclipse.ui.newWizard"
               groupId="eu.scasefp7.eclipse.core.ui.dashboard.groups.design"
               label="Create storyboards"
