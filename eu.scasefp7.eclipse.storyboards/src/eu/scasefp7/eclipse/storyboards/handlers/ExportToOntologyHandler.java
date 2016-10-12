@@ -153,8 +153,10 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 					if (actionAndObject != null) {
 						String action = actionAndObject[0];
 						String object1 = actionAndObject[1];
-						ontology.addActionToActivity(sbdnode.getName(), action);
-						ontology.addObjectToActivity(sbdnode.getName(), object1);
+						if (!action.equals(""))
+							ontology.addActionToActivity(sbdnode.getName(), action);
+						if (!object1.equals(""))
+							ontology.addObjectToActivity(sbdnode.getName(), object1);
 						// String actiontype = sbdnode.get("type") == null ? "create" : sbdnode.get("type");
 						// ontology.addActivityTypeToActivity(sbdnode.getName(), actiontype);
 					}
@@ -271,7 +273,7 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 				}
 			}
 		}
-		if (actobj[0].equals("") || actobj[1].equals(""))
+		if (actobj[0].equals("") && actobj[1].equals(""))
 			return null;
 		return actobj;
 	}
