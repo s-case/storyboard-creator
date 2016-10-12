@@ -150,12 +150,14 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 					ontology.addActivity(sbdnode.getName());
 					ontology.connectActivityDiagramToElement(diagramName, sbdnode.getName());
 					String[] actionAndObject = getActionAndObject(sbdnode.getName(), sbdnode.getAnnotations());
-					String action = actionAndObject[0];
-					String object1 = actionAndObject[1];
-					ontology.addActionToActivity(sbdnode.getName(), action);
-					ontology.addObjectToActivity(sbdnode.getName(), object1);
-					// String actiontype = sbdnode.get("type") == null ? "create" : sbdnode.get("type");
-					// ontology.addActivityTypeToActivity(sbdnode.getName(), actiontype);
+					if (actionAndObject != null) {
+						String action = actionAndObject[0];
+						String object1 = actionAndObject[1];
+						ontology.addActionToActivity(sbdnode.getName(), action);
+						ontology.addObjectToActivity(sbdnode.getName(), object1);
+						// String actiontype = sbdnode.get("type") == null ? "create" : sbdnode.get("type");
+						// ontology.addActivityTypeToActivity(sbdnode.getName(), actiontype);
+					}
 				} else if (sbdnode.getType().equals("startnode")) {
 					// Add the start node
 					ontology.addInitialActivity("StartNode");
@@ -269,11 +271,8 @@ public class ExportToOntologyHandler extends ProjectAwareHandler {
 				}
 			}
 		}
-		String[] tempactobj = activity.split("\\s+");
-		if (actobj[0].equals(""))
-			actobj[0] = tempactobj[0];
-		if (actobj[1].equals(""))
-			actobj[1] = tempactobj[tempactobj.length - 1];
+		if (actobj[0].equals("") || actobj[1].equals(""))
+			return null;
 		return actobj;
 	}
 
