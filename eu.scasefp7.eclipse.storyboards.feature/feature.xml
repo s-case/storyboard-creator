@@ -3,7 +3,8 @@
       id="eu.scasefp7.eclipse.storyboards.feature"
       label="Storyboard Creator"
       version="1.0.0.qualifier"
-      provider-name="S-CASE Consortium">
+      provider-name="S-CASE Consortium"
+      image="s-case-feature.png">
 
    <description url="https://github.com/s-case/requirements-editor">
       This is the Storyboard Creator plugin, a tool for the EU-funded
