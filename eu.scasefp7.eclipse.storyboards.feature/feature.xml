@@ -7,8 +7,7 @@
       image="s-case-feature.png">
 
    <description url="https://github.com/s-case/requirements-editor">
-      This is the Storyboard Creator plugin, a tool for the EU-funded
-project S-CASE
+Storyboard editor creates storyboards - simple workflows that describe the sequence of operations the envisioned service should perform.   
    </description>
 
    <copyright url="http://www.scasefp7.eu/copyright">
